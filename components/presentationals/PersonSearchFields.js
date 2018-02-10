@@ -74,7 +74,7 @@ class PersonSearchFields extends React.Component {
 			          shrink: true,
 			        }} />
 		  		<Button 
-		  			raised 
+		  			variant="raised" 
 		  			color="primary" 
 		  			className={classes.button} 
 		  			onClick={ () => {
