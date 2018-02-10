@@ -1,5 +1,6 @@
 import React from 'react';
-import { getState } from 'redux';
+import {connect} from 'react-redux';
+import { getState, bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 
 //Presentationals
@@ -28,21 +29,25 @@ class PersonFinderContainer extends React.Component {
 
     render() {
         const {classes} = this.props;
-        const personFindersState = this.props.store.getState().personFindersState;
-        if(personFindersState.personFinders[this.props.id] !== undefined)
+        if(status !== undefined)
         {
-            const stateProps = personFindersState.personFinders[this.props.id];
-            const status = stateProps.status;
+            //const stateProps = personFindersState.personFinders[this.props.id];
+            const status = this.props.status;
+            const peopleFound = this.props.peopleFound;
+            console.log("status");
+            console.log(status);
+            console.log("peopleFound")
+            console.log(peopleFound);
             return (
                 <div>
                     <PersonSearchFields 
-                        onSubmit = {this.dispatchPersonRequest.bind(this)}
+                        onSubmit = {this.props.dispatchPersonFinderRequest}
                     />
                     { 
                         (status === 'FOUND') ?
-                            <PersonFound personFound={stateProps.peopleFound[0]} />
+                            <PersonFound personFound={peopleFound[0]} />
                         : (status === 'DUPLICATES_FOUND') ?
-                            <PersonDuplicatesFound duplicates={stateProps.peopleFound} />
+                            <PersonDuplicatesFound duplicates={peopleFound} />
                         : (status === 'NOT_FOUND') ?
                             <PersonNotFound /> 
                         : <div />
@@ -63,22 +68,44 @@ class PersonFinderContainer extends React.Component {
     */
     dispatchPersonRequest(fName, lName, dob)
     {
-        this.props.store.dispatch(PersonRequest(fName,lName,dob,this.props.id));
+        this.props.actions.PersonRequest(fName,lName,dob,this.props.id);
     }
 
     componentWillMount()
     {
+        console.log(this.props.dispatchPersonFinderAdd);
         //Add a PersonFinder to the state
-        this.props.store.dispatch(PersonFinderAdd(this.props.id));
-        //subscribe to the store for state updates.
-        this.props.store.subscribe(this.forceUpdate.bind(this));
+        this.props.dispatchPersonFinderAdd();
     }
+}
+
+const mapStateToProps = (state, ownProps) => {
+    if(state.personFindersState.personFinders[ownProps.id] !== undefined)
+    {
+        return {
+            status : state.personFindersState.personFinders[ownProps.id].status,
+            peopleFound : state.personFindersState.personFinders[ownProps.id].peopleFound
+        }
+    }
+    else
+    {
+        return
+        {
+            status : "WAITING"
+        }
+    }
+  }
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    dispatchPersonFinderRequest : (fName,lName,dob) => dispatch(PersonRequest(fName,lName,dob,ownProps.id)),
+    dispatchPersonFinderAdd : () => dispatch(PersonFinderAdd(ownProps.id))
+  }
 }
 
 //Define required props
 PersonFinderContainer.propTypes = {
-    store : PropTypes.object.isRequired,
     id : PropTypes.string.isRequired,
 }
 
-export default PersonFinderContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(PersonFinderContainer);
