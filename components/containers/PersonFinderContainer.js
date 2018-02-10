@@ -68,13 +68,16 @@ class PersonFinderContainer extends React.Component {
 
     componentWillMount()
     {
+        console.log(this.props.dispatchPersonFinderAdd);
         //Add a PersonFinder to the state
         this.props.dispatchPersonFinderAdd();
     }
 }
 
 const mapStateToProps = (state, ownProps) => {
+
     //ensure that PersonFinderAdd has finished
+
     if(state.personFindersState.personFinders[ownProps.id] !== undefined)
     {
         return {
@@ -82,6 +85,7 @@ const mapStateToProps = (state, ownProps) => {
             peopleFound : state.personFindersState.personFinders[ownProps.id].peopleFound
         }
     }
+
     //wait for PersonFinderAdd to update the state
     else
     {
