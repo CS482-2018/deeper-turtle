@@ -89,8 +89,7 @@ const mapStateToProps = (state, ownProps) => {
     //wait for PersonFinderAdd to update the state
     else
     {
-        return
-        {
+        return {
             status : "WAITING"
         }
     }

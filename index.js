@@ -8,34 +8,48 @@ import RootReducer from './reducers/RootReducer';
 
 import PersonFinderAdd from './actions/PersonFinderAdd';
 
+import Typography from 'material-ui/Typography';
+
 import { applyMiddleware, createStore } from 'redux';
 import logger from 'redux-logger'
 import thunk from 'redux-thunk';
 
+import createHistory from 'history/createBrowserHistory'
+import { Route } from 'react-router'
+
+import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux'
+
+
+// Create a browser history
+const history = createHistory()
+
+// Build the middleware for intercepting and dispatching navigation actions
+const historyMiddleware = routerMiddleware(history)
 
 //initialize store
-let store = createStore(RootReducer, applyMiddleware(thunk, logger));
-console.log(store.getState());
-
-
+let store = createStore(RootReducer, applyMiddleware(thunk, logger, historyMiddleware));
 
 //top level of React component hierarchy
 class App extends React.Component {
   render() {
     return (
-      <div className="app">
-        <AppFrame>
-            <PersonFinderContainer store={store} id="personFinder1" />
-        </AppFrame>
-
-      </div>
+      <ConnectedRouter history={history}>
+        <div className="app">
+          <AppFrame>
+              <Route exact path="/" component={() => {
+                return(
+                  <PersonFinderContainer store={store} id="personFinder1" />
+                );
+              }}/>
+              <Route path="/test" component={() => {
+                return(
+                  <Typography type="title" >Test Page</Typography>
+                );
+              }}/>
+          </AppFrame>
+        </div>
+      </ConnectedRouter>
     )
-  }
-
-  componentWillMount()
-  {
-      //subscribe to the store for state updates.
-      store.subscribe(this.forceUpdate.bind(this));
   }
 }
 

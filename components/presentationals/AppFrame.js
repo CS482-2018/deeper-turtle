@@ -10,13 +10,13 @@ import IconButton from 'material-ui/IconButton';
 import Hidden from 'material-ui/Hidden';
 import Divider from 'material-ui/Divider';
 import MenuIcon from 'material-ui-icons/Menu';
-
+import {Link} from 'react-router-dom';
 const drawerWidth = 240;
 
 const styles = theme => ({
     root: {
         width: '100%',
-        height: '99vh',
+        height: '98vh',
         zIndex: 1,
         overflow: 'hidden',
     },
@@ -84,19 +84,21 @@ class AppFrame extends React.Component {
     render() {
         const { classes, theme } = this.props;
 
+        const TestPageLink = props => <Link to="/test" {...props} />
+        const HomePageLink = props => <Link to="/" {...props} />
+
         const drawer = (
             <div>
                 <div className={classes.drawerHeader} />
                 <Divider />
                 <List>
-                        <ListItem button>
-                                <ListItemText primary="Item 1" />
+                        <ListItem button component={HomePageLink}>
+                                <ListItemText primary="Home" />
                         </ListItem>
-                        <ListItem button>
-                                <ListItemText primary="Item 2" />
+                        <ListItem button component={TestPageLink}>
+                                <ListItemText primary="Test Page"/>
                         </ListItem>
                 </List>
-
             </div>
         );
 
