@@ -7,7 +7,8 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 module.exports = {
   entry: './index.js',
   output: {
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: '/'
   },
   module: {
     rules: [
@@ -23,5 +24,8 @@ module.exports = {
       }
     ]
  },
+ devServer: {
+    historyApiFallback: true,
+  },
  plugins: [HtmlWebpackPluginConfig]
 }
