@@ -96,7 +96,7 @@ class AppFrame extends React.Component {
                                 <ListItemText primary="Home" />
                         </ListItem>
                         <ListItem button component={TestPageLink}>
-                                <ListItemText primary="Test Page"/>
+                                <ListItemText primary="Scott's Dev Page"/>
                         </ListItem>
                 </List>
             </div>
