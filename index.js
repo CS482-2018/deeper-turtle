@@ -49,7 +49,7 @@ class App extends React.Component {
               <Route exact path="/Keenan" component={() => {
                 return(
                   <PersonFinderContainer store={store} id="personFinder1" />
-                  //<Typography type="Just an Example Page" >Keenan Page</Typography>
+                  //<Typography type="title" >Keenan Page</Typography>
                 );
               }}/>
           </AppFrame>
