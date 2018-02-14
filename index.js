@@ -38,7 +38,7 @@ class App extends React.Component {
           <AppFrame>
               <Route exact path="/" component={() => {
                 return(
-                  <PersonFinderContainer store={store} id="personFinder1" />
+                  <PersonFinderContainer id="personFinder1" />
                 );
               }}/>
               <Route path="/test" component={() => {
