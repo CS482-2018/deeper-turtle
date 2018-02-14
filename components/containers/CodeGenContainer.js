@@ -16,12 +16,12 @@ import Typography from 'material-ui/Typography';
  *   RequiredProps:
  *      id: The a string representing the id of the PersonFinderContainer 
 */
-class PantryFormContainer extends React.Component {
+class CodeGenContainer extends React.Component {
 
     render() {
         return(
             <div>
-                <Typography type="title" >Pantry Form</Typography>
+                <Typography type="title" >Code Gen</Typography>
             </div>
         );
     }
@@ -30,4 +30,4 @@ class PantryFormContainer extends React.Component {
 
 
 
-export default PantryFormContainer;
+export default CodeGenContainer;

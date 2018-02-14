@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PersonFinderContainer from './components/containers/PersonFinderContainer';
 import AppFrame from './components/presentationals/AppFrame';
-import PantryFormContainer from './components/containers/PantryFormContainer';
+import CodeGenContainer from './components/containers/CodeGenContainer';
 
 import RootReducer from './reducers/RootReducer';
 
@@ -47,9 +47,9 @@ class App extends React.Component {
                   <Typography type="title" >Test Page</Typography>
                 );
               }}/>
-              <Route path="/pantry-form" component={() => {
+              <Route path="/code-gen" component={() => {
                 return(
-                  <PantryFormContainer />
+                  <CodeGenContainer />
                 );
               }}/>
           </AppFrame>
