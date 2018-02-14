@@ -43,7 +43,8 @@ class App extends React.Component {
               }}/>
               <Route path="/test" component={() => {
                 return(
-                  <Typography type="title" >Test Page</Typography>
+                  <Typography type="title" >This is Scotts development space</Typography>
+                  
                 );
               }}/>
           </AppFrame>
