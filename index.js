@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PersonFinderContainer from './components/containers/PersonFinderContainer';
 import AppFrame from './components/presentationals/AppFrame';
+import CodeGenContainer from './components/containers/CodeGenContainer';
 
 import RootReducer from './reducers/RootReducer';
 
@@ -51,6 +52,11 @@ class App extends React.Component {
                 return(
                   <PersonFinderContainer store={store} id="personFinder1" />
                   //<Typography type="title" >Keenan Page</Typography>
+                );
+              }}/>
+              <Route path="/code-gen" component={() => {
+                return(
+                  <CodeGenContainer />
                 );
               }}/>
           </AppFrame>
