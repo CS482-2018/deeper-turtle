@@ -47,6 +47,12 @@ class App extends React.Component {
                   
                 );
               }}/>
+              <Route exact path="/Keenan" component={() => {
+                return(
+                  <PersonFinderContainer store={store} id="personFinder1" />
+                  //<Typography type="title" >Keenan Page</Typography>
+                );
+              }}/>
           </AppFrame>
         </div>
       </ConnectedRouter>
