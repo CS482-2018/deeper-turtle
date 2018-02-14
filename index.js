@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PersonFinderContainer from './components/containers/PersonFinderContainer';
 import AppFrame from './components/presentationals/AppFrame';
+import PantryFormContainer from './components/containers/PantryFormContainer';
 
 import RootReducer from './reducers/RootReducer';
 
@@ -38,12 +39,17 @@ class App extends React.Component {
           <AppFrame>
               <Route exact path="/" component={() => {
                 return(
-                  <PersonFinderContainer store={store} id="personFinder1" />
+                  <PersonFinderContainer id="personFinder1" />
                 );
               }}/>
               <Route path="/test" component={() => {
                 return(
                   <Typography type="title" >Test Page</Typography>
+                );
+              }}/>
+              <Route path="/pantry-form" component={() => {
+                return(
+                  <PantryFormContainer />
                 );
               }}/>
           </AppFrame>

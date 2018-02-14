@@ -86,6 +86,7 @@ class AppFrame extends React.Component {
 
         const TestPageLink = props => <Link to="/test" {...props} />
         const HomePageLink = props => <Link to="/" {...props} />
+        const PantyFormLink = props => <Link to="/pantry-form" {...props} />
 
         const drawer = (
             <div>
@@ -97,6 +98,9 @@ class AppFrame extends React.Component {
                         </ListItem>
                         <ListItem button component={TestPageLink}>
                                 <ListItemText primary="Test Page"/>
+                        </ListItem>
+                        <ListItem button component={PantyFormLink}>
+                                <ListItemText primary="Panty Form"/>
                         </ListItem>
                 </List>
             </div>
