@@ -6,6 +6,7 @@ const initialState = {
 const initialPersonFinderState = {
   status : "WAITING",
   peopleFound : [],
+  chosenPerson: undefined,
 }
 
 /**
@@ -14,19 +15,26 @@ const initialPersonFinderState = {
  */
 function PersonFindersReducer(state = initialState, action) {
   switch(action.type) {
-    case 'PERSON_FOUND':
+    case 'PEOPLE_FOUND':
       let personFound = Object.assign({}, state);
-      personFound.personFinders[action.id].peopleFound = [action.personFoundObj];
-      personFound.personFinders[action.id].status = action.status;
+      var finder = Object.assign({}, personFound.personFinders[action.id])
+      finder.peopleFound = action.peopleFound;
+      finder.status = action.status;
+      personFound.personFinders[action.id] = finder;
       return personFound;
-    case 'PERSON_DUPLICATES_FOUND':
-      let duplicates = Object.assign({}, state);
-      duplicates.personFinders[action.id].peopleFound = action.peopleFound;
-      duplicates.personFinders[action.id].status = action.status;
-      return duplicates;
+    case 'PERSON_CHOSEN':
+      let personChosen = Object.assign({}, state);
+      var finder = Object.assign({}, personChosen.personFinders[action.id])
+      finder.chosenPerson = action.personFoundObj
+      personChosen.personFinders[action.id] = finder;
+      return personChosen;
     case 'PERSON_NOT_FOUND':
       let notFound = Object.assign({}, state);
-      notFound.personFinders[action.id].status = action.status
+      var finder = Object.assign({}, notFound.personFinders[action.id])
+      finder.status = action.status
+      finder.chosenPerson = undefined;
+      finder.peopleFound = [];
+      notFound.personFinders[action.id] = finder;
       return notFound;
     case 'PERSON_FINDER_ADD':
       let addedPersonFinder = Object.assign({}, state);
