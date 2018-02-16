@@ -1,6 +1,5 @@
-import PersonFound from './PersonFound';
+import PeopleFound from './PeopleFound';
 import PersonNotFound from './PersonNotFound';
-import PersonDuplicatesFound from './PersonDuplicatesFound';
 
 //CLEAN test data in the absence of an API or DB connection
 															//RIP deep-turtle
@@ -34,10 +33,8 @@ function PersonRequest(firstName, lastName, dob, id) {
   		var foundPeople = matchPerson(firstName, lastName, dob);
   		if(foundPeople.length == 0)
   			dispatch(PersonNotFound(id))
-  		else if(foundPeople.length == 1)
-  			dispatch(PersonFound(foundPeople[0], id))
   		else
-  			dispatch(PersonDuplicatesFound(foundPeople, id));
+  			dispatch(PeopleFound(foundPeople, id));
   }
 }
 

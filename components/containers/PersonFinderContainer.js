@@ -5,15 +5,14 @@ import PropTypes from 'prop-types';
 
 //Presentationals
 import PersonSearchFields from '../presentationals/PersonSearchFields';
-import PersonFound from '../presentationals/PersonFound';
 import PersonNotFound from '../presentationals/PersonNotFound';
-import PersonDuplicatesFound from '../presentationals/PersonDuplicatesFound';
+import PeopleTable from '../presentationals/PeopleTable';
 
 //Actions
 import PersonRequest from '../../actions/PersonRequest';
 import PersonFinderAdd from '../../actions/PersonFinderAdd';
-
-
+import PersonFinderDelete from '../../actions/PersonFinderDelete';
+import PersonChosen from '../../actions/PersonChosen';
 /**
  *   This class is a container component.  It holds presentational componenets and pass
  *   the store state to the presentationals.  It also dispatches actions based on events
@@ -33,16 +32,15 @@ class PersonFinderContainer extends React.Component {
             //const stateProps = personFindersState.personFinders[this.props.id];
             const status = this.props.status;
             const peopleFound = this.props.peopleFound;
+            const chosenPerson = this.props.chosenPerson;
             return (
                 <div>
                     <PersonSearchFields 
                         onSubmit = {this.props.dispatchPersonFinderRequest}
                     />
                     { 
-                        (status === 'FOUND') ?
-                            <PersonFound personFound={peopleFound[0]} />
-                        : (status === 'DUPLICATES_FOUND') ?
-                            <PersonDuplicatesFound duplicates={peopleFound} />
+                        (status === 'PEOPLE_FOUND') ?
+                           <PeopleTable selectable onSelect={this.props.dispatchPersonChosen} people={this.props.peopleFound} />
                         : (status === 'NOT_FOUND') ?
                             <PersonNotFound /> 
                         : <div />
@@ -72,6 +70,11 @@ class PersonFinderContainer extends React.Component {
         //Add a PersonFinder to the state
         this.props.dispatchPersonFinderAdd();
     }
+
+    componentWillUnmount()
+    {
+        this.props.dispatchPersonFinderDelete();
+    }
 }
 
 const mapStateToProps = (state, ownProps) => {
@@ -82,7 +85,8 @@ const mapStateToProps = (state, ownProps) => {
     {
         return {
             status : state.personFindersState.personFinders[ownProps.id].status,
-            peopleFound : state.personFindersState.personFinders[ownProps.id].peopleFound
+            peopleFound : state.personFindersState.personFinders[ownProps.id].peopleFound,
+            chosenPerson : state.personFindersState.personFinders[ownProps.id].chosenPerson,
         }
     }
 
@@ -98,7 +102,9 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     dispatchPersonFinderRequest : (fName,lName,dob) => dispatch(PersonRequest(fName,lName,dob,ownProps.id)),
-    dispatchPersonFinderAdd : () => dispatch(PersonFinderAdd(ownProps.id))
+    dispatchPersonChosen: (personObj) => dispatch(PersonChosen(personObj, ownProps.id)),
+    dispatchPersonFinderAdd : () => dispatch(PersonFinderAdd(ownProps.id)),
+    dispatchPersonFinderDelete : () => dispatch(PersonFinderDelete(ownProps.id))
   }
 }
 
