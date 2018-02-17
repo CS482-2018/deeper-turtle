@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { getState, bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 
 //Presentationals
@@ -12,7 +11,6 @@ import PeopleTable from '../presentationals/PeopleTable';
 import PersonRequest from '../../actions/PersonRequest';
 import PersonFinderAdd from '../../actions/PersonFinderAdd';
 import PersonFinderDelete from '../../actions/PersonFinderDelete';
-import PersonChosen from '../../actions/PersonChosen';
 /**
  *   This class is a container component.  It holds presentational componenets and pass
  *   the store state to the presentationals.  It also dispatches actions based on events
@@ -26,7 +24,7 @@ import PersonChosen from '../../actions/PersonChosen';
 class PersonFinderContainer extends React.Component {
 
     render() {
-        const {classes} = this.props;
+        const {classes, onPersonChosen} = this.props;
         if(status !== undefined)
         {
             //const stateProps = personFindersState.personFinders[this.props.id];
@@ -40,9 +38,13 @@ class PersonFinderContainer extends React.Component {
                     />
                     { 
                         (status === 'PEOPLE_FOUND') ?
-                           <PeopleTable selectable onSelect={this.props.dispatchPersonChosen} people={this.props.peopleFound} />
+                            ((onPersonChosen !== undefined) ?
+                                <PeopleTable selectable onSelect={onPersonChosen} people={this.props.peopleFound} /> :
+                                <PeopleTable people={this.props.peopleFound} />)
                         : (status === 'NOT_FOUND') ?
-                            <PersonNotFound /> 
+                            ((onPersonChosen !== undefined) ?
+                                <PersonNotFound setChosenUndef={()=>onPersonChosen(undefined)}/> :
+                                <PersonNotFound />)
                         : <div />
                     } 
                 </div>
@@ -86,7 +88,6 @@ const mapStateToProps = (state, ownProps) => {
         return {
             status : state.personFindersState.personFinders[ownProps.id].status,
             peopleFound : state.personFindersState.personFinders[ownProps.id].peopleFound,
-            chosenPerson : state.personFindersState.personFinders[ownProps.id].chosenPerson,
         }
     }
 
@@ -102,7 +103,6 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     dispatchPersonFinderRequest : (fName,lName,dob) => dispatch(PersonRequest(fName,lName,dob,ownProps.id)),
-    dispatchPersonChosen: (personObj) => dispatch(PersonChosen(personObj, ownProps.id)),
     dispatchPersonFinderAdd : () => dispatch(PersonFinderAdd(ownProps.id)),
     dispatchPersonFinderDelete : () => dispatch(PersonFinderDelete(ownProps.id))
   }

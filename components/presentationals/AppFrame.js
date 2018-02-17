@@ -16,7 +16,7 @@ const drawerWidth = 240;
 const styles = theme => ({
     root: {
         width: '100%',
-        height: '98vh',
+        minHeight: '98vh',
         zIndex: 1,
         overflow: 'hidden',
     },

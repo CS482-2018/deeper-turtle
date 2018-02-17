@@ -22,12 +22,6 @@ function PersonFindersReducer(state = initialState, action) {
       finder.status = action.status;
       personFound.personFinders[action.id] = finder;
       return personFound;
-    case 'PERSON_CHOSEN':
-      let personChosen = Object.assign({}, state);
-      var finder = Object.assign({}, personChosen.personFinders[action.id])
-      finder.chosenPerson = action.personFoundObj
-      personChosen.personFinders[action.id] = finder;
-      return personChosen;
     case 'PERSON_NOT_FOUND':
       let notFound = Object.assign({}, state);
       var finder = Object.assign({}, notFound.personFinders[action.id])
