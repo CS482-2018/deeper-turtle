@@ -2,6 +2,7 @@ import { Provider } from 'react-redux';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PersonFinderContainer from './components/containers/PersonFinderContainer';
+import HelperContainer from './components/containers/HelperContainer';
 import AppFrame from './components/presentationals/AppFrame';
 import CodeGenContainer from './components/containers/CodeGenContainer';
 
@@ -57,6 +58,11 @@ class App extends React.Component {
               <Route path="/code-gen" component={() => {
                 return(
                   <CodeGenContainer />
+                );
+              }}/>
+              <Route path="/Helper" component={() => {
+                return(
+                  <HelperContainer />
                 );
               }}/>
           </AppFrame>

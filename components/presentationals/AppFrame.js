@@ -88,6 +88,7 @@ class AppFrame extends React.Component {
         const HomePageLink = props => <Link to="/" {...props} />
         const CodeGenLink = props => <Link to="/code-gen" {...props} />
         const KeenanPageLink = props => <Link to="/Keenan" {...props} />
+        const HelperLink = props => <Link to="/Helper" {...props} />
 
         const drawer = (
             <div>
@@ -105,6 +106,9 @@ class AppFrame extends React.Component {
                         </ListItem>
                         <ListItem button component={CodeGenLink}>
                                 <ListItemText primary="Code Gen"/>
+                        </ListItem>
+                         <ListItem button component={HelperLink}>
+                                <ListItemText primary="Helper"/>
                         </ListItem>
                 </List>
             </div>
