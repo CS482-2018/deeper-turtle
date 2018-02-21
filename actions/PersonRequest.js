@@ -8,19 +8,22 @@ const people =[
 		fName: 'Test',
 		lName: 'Person',
 		dob: '2000-01-01',
-		addr: '1200 Academy St, Kalamazoo, MI 49006'
+		addr: '1200 Academy St, Kalamazoo, MI 49006',
+		code: 343469
 	},
 	{
 		fName: 'Test',
 		lName: 'Person',
 		dob: '2000-01-01',
-		addr: '1600 Pennsylvania Ave NW, Washington, DC 20500'
+		addr: '1600 Pennsylvania Ave NW, Washington, DC 20500',
+		code: 252391
 	},
 	{
 		fName: 'Another',
 		lName: 'Person',
 		dob: '2000-01-01',
-		addr: '1200 Academy St, Kalamazoo, MI 49006'
+		addr: '1200 Academy St, Kalamazoo, MI 49006',
+		code: 15551529
 	}
 ]
 

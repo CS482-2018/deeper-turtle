@@ -15,7 +15,10 @@ const styles = theme => ({
 
 
 /**
- * This presentational componenet dipslays a message within a paper componenent that nobody was found.
+ * This presentational component dipslays a message within a paper component that nobody was found.
+ *
+ * Optional props:
+ *    setChosenUndef: Function, this function is called on mount to set the chosenPerson to undefined
  */
 class PersonNotFound extends React.Component {
 
@@ -28,6 +31,16 @@ class PersonNotFound extends React.Component {
         );
     }
 
+    componentWillMount()
+    {
+      if(this.props.setChosenUndef !== undefined)
+        this.props.setChosenUndef();
+    }
+
+}
+
+PersonNotFound.propTypes = {
+  setChosenUndef: PropTypes.func,
 }
 
 export default withStyles(styles)(PersonNotFound)

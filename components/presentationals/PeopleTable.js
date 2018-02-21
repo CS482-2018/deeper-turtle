@@ -92,7 +92,7 @@ class PeopleTable extends React.Component {
 
     handleClick(checked, index) 
     {
-        if(checked)
+        if(checked && (this.props.selectable !== undefined || this.props.selectable === false))
         {
             this.setState({selectedIndex: index})
             this.props.onSelect(this.props.people[index]);

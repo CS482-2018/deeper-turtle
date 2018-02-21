@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import PersonFinderReducer from './PersonFinderReducer';
+import CodeGenReducer from './CodeGenReducer';
 import { routerReducer } from 'react-router-redux'
 
 /**
@@ -7,5 +8,5 @@ import { routerReducer } from 'react-router-redux'
  * by the store.
  */
 export default combineReducers(
-  { personFindersState: PersonFinderReducer, router: routerReducer}
+  { personFindersState: PersonFinderReducer, router: routerReducer, codeGenState: CodeGenReducer}
 );
