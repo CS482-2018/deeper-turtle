@@ -10,7 +10,10 @@ import IconButton from 'material-ui/IconButton';
 import Hidden from 'material-ui/Hidden';
 import Divider from 'material-ui/Divider';
 import MenuIcon from 'material-ui-icons/Menu';
+import Button from 'material-ui/Button';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
+
 const drawerWidth = 240;
 
 const styles = theme => ({
@@ -59,6 +62,10 @@ const styles = theme => ({
             marginTop: 64,
         },
     },
+    button: {
+        marginLeft: 'auto',
+        marginRight: 0,
+    }
 });
 
 /**
@@ -89,6 +96,7 @@ class AppFrame extends React.Component {
         const CodeGenLink = props => <Link to="/code-gen" {...props} />
         const KeenanPageLink = props => <Link to="/Keenan" {...props} />
         const HelperLink = props => <Link to="/Helper" {...props} />
+        const LoginLink = props => <Link to="/login" {...props} />
 
         const drawer = (
             <div>
@@ -130,6 +138,7 @@ class AppFrame extends React.Component {
                             <Typography variant="title" color="inherit" noWrap>
                                 KLF Data Entry
                             </Typography>
+                            {!this.props.isAuthenticated ? <Button component={LoginLink} className={classes.button} color="inherit">KLF Login</Button> : <div/> }
                         </Toolbar>
                     </AppBar>
                     <Hidden mdUp>
@@ -167,6 +176,7 @@ class AppFrame extends React.Component {
         );
     }
 }
+
 
 AppFrame.propTypes = {
     classes: PropTypes.object.isRequired,

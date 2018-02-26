@@ -1,12 +1,10 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
-  template: './index.html',
-  filename: 'index.html',
-  inject: 'body'
-})
+const path = require('path');
+
 module.exports = {
   entry: './index.js',
   output: {
+    path: path.join(__dirname, "dist"),
     filename: 'bundle.js',
     publicPath: '/'
   },
@@ -26,6 +24,5 @@ module.exports = {
  },
  devServer: {
     historyApiFallback: true,
-  },
- plugins: [HtmlWebpackPluginConfig]
+  }
 }
