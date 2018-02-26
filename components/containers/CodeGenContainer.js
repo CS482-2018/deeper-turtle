@@ -5,11 +5,13 @@ import PropTypes from 'prop-types';
 import PersonFinderContainer from './PersonFinderContainer';
 import CodeDisplay from '../presentationals/CodeDisplay';
 
+import {CodeGenChoosePerson, CodeGenGenerate, CodeGenDelete} from '../../actions/CodeGenActions';
+/*
 import CodeGenChoosePerson from '../../actions/CodeGenChoosePerson';
 import CodeGenGenerate from '../../actions/CodeGenGenerate';
 import CodeGenDelete from '../../actions/CodeGenDelete';
 
-
+*/
 
 /**
  *   This class represents the front end for the Code Generator page of the web application.
