@@ -2,15 +2,14 @@ import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
+//Actions
+import { PersonRequest, PersonFinderAdd, PersonFinderDelete } from '../../actions/PersonFinderActions';
+
 //Presentationals
 import PersonSearchFields from '../presentationals/PersonSearchFields';
 import PersonNotFound from '../presentationals/PersonNotFound';
 import PeopleTable from '../presentationals/PeopleTable';
 
-//Actions
-import PersonRequest from '../../actions/PersonRequest';
-import PersonFinderAdd from '../../actions/PersonFinderAdd';
-import PersonFinderDelete from '../../actions/PersonFinderDelete';
 /**
  *   This class is a container component.  It holds presentational componenets and pass
  *   the store state to the presentationals.  It also dispatches actions based on events

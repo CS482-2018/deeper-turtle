@@ -10,8 +10,6 @@ import PrivateRouteContainer from './components/containers/PrivateRouteContainer
 
 import RootReducer from './reducers/RootReducer';
 
-import PersonFinderAdd from './actions/PersonFinderAdd';
-
 import Typography from 'material-ui/Typography';
 
 import { applyMiddleware, createStore } from 'redux';
