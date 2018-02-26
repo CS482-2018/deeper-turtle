@@ -5,6 +5,8 @@ import PersonFinderContainer from './components/containers/PersonFinderContainer
 import HelperContainer from './components/containers/HelperContainer';
 import AppFrame from './components/presentationals/AppFrame';
 import CodeGenContainer from './components/containers/CodeGenContainer';
+import LoginContainer from './components/containers/LoginContainer';
+import PrivateRouteContainer from './components/containers/PrivateRouteContainer';
 
 import RootReducer from './reducers/RootReducer';
 
@@ -55,7 +57,7 @@ class App extends React.Component {
                   //<Typography type="title" >Keenan Page</Typography>
                 );
               }}/>
-              <Route path="/code-gen" component={() => {
+              <PrivateRouteContainer path="/code-gen" component={() => {
                 return(
                   <CodeGenContainer />
                 );
@@ -63,6 +65,11 @@ class App extends React.Component {
               <Route path="/Helper" component={() => {
                 return(
                   <HelperContainer />
+                );
+              }}/>
+              <Route path="/login" component={() => {
+                return(
+                  <LoginContainer />
                 );
               }}/>
           </AppFrame>
