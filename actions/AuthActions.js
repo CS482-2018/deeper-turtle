@@ -46,6 +46,18 @@ export function Login(username, password, redirectPath)
 }
 
 /**
+ * Sets the authentication token to null and marks the user as unauthenticated.
+ * The user is then redirected to the root path.
+ */
+export function Logout()
+{
+	return (dispatch) => {
+		dispatch(SetAuthToken(undefined, false));
+		dispatch(push('/'));
+	}	
+}
+
+/**
  * Sets the authentication token and whether the user is authenticated
  * to the given values
  *
