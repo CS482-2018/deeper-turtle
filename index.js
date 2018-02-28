@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PersonFinderContainer from './components/containers/PersonFinderContainer';
 import HelperContainer from './components/containers/HelperContainer';
+import SchedulerContainer from './components/containers/SchedulerContainer';
 import AppFrame from './components/presentationals/AppFrame';
 import CodeGenContainer from './components/containers/CodeGenContainer';
 import LoginContainer from './components/containers/LoginContainer';
@@ -45,8 +46,8 @@ class App extends React.Component {
               }}/>
               <Route path="/test" component={() => {
                 return(
-                  <Typography type="title" >This is Scotts development space</Typography>
-                  
+
+                  <SchedulerContainer id="SchedulerContainer" />
                 );
               }}/>
               <Route exact path="/Keenan" component={() => {
