@@ -9,6 +9,11 @@ import HelperContainer from './HelperContainer';
 import CodeGenContainer from './CodeGenContainer';
 import LoginContainer from './LoginContainer';
 import PrivateRouteContainer from './PrivateRouteContainer';
+<<<<<<< HEAD
+=======
+import SchedulerContainer from './SchedulerContainer';
+
+>>>>>>> sharifDev/SchedulingActions
 
 import Typography from 'material-ui/Typography';
 
@@ -25,7 +30,11 @@ class Routes extends React.Component {
 					}}/>
 					<Route path="/test" component={() => {
 						return(
+<<<<<<< HEAD
 							<Typography type="title" >This is Scotts development space</Typography>
+=======
+							<SchedulerContainer id="SchedulerContainer" />
+>>>>>>> sharifDev/SchedulingActions
 						);
 					}}/>
 					<Route exact path="/Keenan" component={() => {
@@ -66,4 +75,8 @@ Routes.propTypes = {
 	history : PropTypes.object.isRequired,
 }
 
+<<<<<<< HEAD
 export default connect(mapStateToProps)(Routes);
+=======
+export default connect(mapStateToProps)(Routes);
+>>>>>>> sharifDev/SchedulingActions

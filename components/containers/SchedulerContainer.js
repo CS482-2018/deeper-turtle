@@ -13,7 +13,6 @@ import FailedToSchedule from '../presentationals/FailedToSchedule';
 import LogOffScheduler from '../../actions/LogOffScheduler';
 import SchedulePerson from '../../actions/SchedulePerson';
 import EnterHouseCode from '../../actions/EnterHouseCode';
-import PersonFinderAdd from '../../actions/PersonFinderAdd';
 
 
 
@@ -33,7 +32,7 @@ class SchedulerContainer extends React.Component {
       const {classes} = this.props;
       const validCode = this.props.validCode; // is the household code valid?
       let pantriesList = null;
-      
+
       if(this.props.validHeadOfHouse){ // is the head of house personal info valid?
         pantriesList = <div>Show Pantries</div>; // TODO display list of available pantries
       } else if (validCode && !this.props.validHeadOfHouse && this.props.fName != ''){ // is head of house info invalid?
