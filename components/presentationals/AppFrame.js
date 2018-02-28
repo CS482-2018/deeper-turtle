@@ -112,12 +112,16 @@ class AppFrame extends React.Component {
                         <ListItem button component={KeenanPageLink}>
                                 <ListItemText primary="Keenan Page"/>
                         </ListItem>
-                        <ListItem button component={CodeGenLink}>
-                                <ListItemText primary="Code Gen"/>
-                        </ListItem>
-                         <ListItem button component={HelperLink}>
-                                <ListItemText primary="Helper"/>
-                        </ListItem>
+                        {this.props.isAuthenticated ?
+                            <div> 
+                                <ListItem button component={CodeGenLink}>
+                                        <ListItemText primary="Code Gen"/>
+                                </ListItem>
+                                 <ListItem button component={HelperLink}>
+                                        <ListItemText primary="Helper"/>
+                                </ListItem> 
+                            </div>: null
+                        }
                 </List>
             </div>
         );
@@ -138,7 +142,9 @@ class AppFrame extends React.Component {
                             <Typography variant="title" color="inherit" noWrap>
                                 KLF Data Entry
                             </Typography>
-                            {!this.props.isAuthenticated ? <Button component={LoginLink} className={classes.button} color="inherit">KLF Login</Button> : <div/> }
+                            {!this.props.isAuthenticated ? 
+                                <Button component={LoginLink} className={classes.button} color="inherit">KLF Login</Button> : 
+                                <Button className={classes.button} color="inherit" onClick={this.props.onLogout}>Logout</Button> }
                         </Toolbar>
                     </AppBar>
                     <Hidden mdUp>
@@ -181,6 +187,8 @@ class AppFrame extends React.Component {
 AppFrame.propTypes = {
     classes: PropTypes.object.isRequired,
     theme: PropTypes.object.isRequired,
+    onLogout: PropTypes.func.isRequired,
+    isAuthenticated: PropTypes.bool.isRequired,
 };
 
 export default withStyles(styles, { withTheme: true })(AppFrame);
