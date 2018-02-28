@@ -41,13 +41,9 @@ class PersonFinderContainer extends React.Component {
                                 <PeopleTable selectable onSelect={onPersonChosen} people={this.props.peopleFound} /> :
                                 <PeopleTable people={this.props.peopleFound} />)
                         : (status === 'NOT_FOUND') ?
-<<<<<<< HEAD
                             ((onPersonChosen !== undefined) ?
                                 <PersonNotFound setChosenUndef={()=>onPersonChosen(undefined)}/> :
                                 <PersonNotFound />)
-=======
-                            <PersonNotFound />
->>>>>>> sharifDev/SchedulerPage
                         : <div />
                     }
                 </div>

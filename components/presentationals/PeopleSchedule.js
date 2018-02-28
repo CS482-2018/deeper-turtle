@@ -8,9 +8,6 @@ import { withStyles } from 'material-ui/styles';
 import PropTypes from 'prop-types';
 import Button from 'material-ui/Button';
 
-//Actions
-import PersonRequest from '../../actions/PersonRequest';
-import PersonFinderAdd from '../../actions/PersonFinderAdd';
 
 const styles = theme => ({
   container: {
