@@ -21,7 +21,7 @@ import PersonChosen from '../../actions/PersonChosen';
  *   display.
  *
  *   RequiredProps:
- *      id: The a string representing the id of the PersonFinderContainer 
+ *      id: The a string representing the id of the PersonFinderContainer
 */
 class PersonFinderContainer extends React.Component {
 
@@ -35,16 +35,16 @@ class PersonFinderContainer extends React.Component {
             const chosenPerson = this.props.chosenPerson;
             return (
                 <div>
-                    <PersonSearchFields 
+                    <PersonSearchFields
                         onSubmit = {this.props.dispatchPersonFinderRequest}
                     />
-                    { 
+                    {
                         (status === 'PEOPLE_FOUND') ?
                            <PeopleTable selectable onSelect={this.props.dispatchPersonChosen} people={this.props.peopleFound} />
                         : (status === 'NOT_FOUND') ?
-                            <PersonNotFound /> 
+                            <PersonNotFound />
                         : <div />
-                    } 
+                    }
                 </div>
             )
         }
@@ -56,7 +56,7 @@ class PersonFinderContainer extends React.Component {
     }
 
     /**
-        This function is passed the the PersonSearchFields presentational, so a PersonRequest 
+        This function is passed the the PersonSearchFields presentational, so a PersonRequest
         action can be dispatched when a search is submitted.
     */
     dispatchPersonRequest(fName, lName, dob)

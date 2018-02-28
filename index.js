@@ -2,6 +2,7 @@ import { Provider } from 'react-redux';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PersonFinderContainer from './components/containers/PersonFinderContainer';
+import SchedulerContainer from './components/containers/SchedulerContainer';
 import AppFrame from './components/presentationals/AppFrame';
 import CodeGenContainer from './components/containers/CodeGenContainer';
 
@@ -44,8 +45,8 @@ class App extends React.Component {
               }}/>
               <Route path="/test" component={() => {
                 return(
-                  <Typography type="title" >This is Scotts development space</Typography>
-                  
+
+                  <SchedulerContainer id="SchedulerContainer" />
                 );
               }}/>
               <Route exact path="/Keenan" component={() => {
