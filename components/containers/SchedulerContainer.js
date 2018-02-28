@@ -5,13 +5,12 @@ import PropTypes from 'prop-types';
 
 //Presentationals
 import PersonSearchFields from '../presentationals/PersonSearchFields';
-import PersonFound from '../presentationals/PersonFound';
-import PersonNotFound from '../presentationals/PersonNotFound';
-import PersonDuplicatesFound from '../presentationals/PersonDuplicatesFound';
+import PeopleSchedule from '../presentationals/PeopleSchedule';
+import HouseCodePage from '../presentationals/HouseCodePage';
+import FailedToSchedule from '../presentationals/FailedToSchedule';
 
 //Actions
-import PersonRequest from '../../actions/PersonRequest';
-import PersonFinderAdd from '../../actions/PersonFinderAdd';
+import {LogOffScheduler, SchedulePerson, EnterHouseCode} from '../../actions/SchedulingActions';
 
 
 /**
@@ -20,91 +19,76 @@ import PersonFinderAdd from '../../actions/PersonFinderAdd';
  *   from the presentationals. The container does not define actual react components to be
  *   rendered (i.e. presentationals), it contains the logic for which presentationals to
  *   display.
- *
- *   RequiredProps:
- *      id: The a string representing the id of the PersonFinderContainer
-*/
+ */
 class SchedulerContainer extends React.Component {
 
-    render() {
-        const {classes} = this.props;
-        if(status !== undefined)
-        {
-            //const stateProps = personFindersState.personFinders[this.props.id];
-            const status = this.props.status;
-            const peopleFound = this.props.peopleFound;
-            return (
-                <div>
-                    <PersonSearchFields
-                        onSubmit = {this.props.dispatchPersonFinderRequest}
-                    />
-                    {
-                        (status === 'FOUND') ?
-                            <PersonFound personFound={peopleFound[0]} />
-                        : (status === 'DUPLICATES_FOUND') ?
-                            <PersonDuplicatesFound duplicates={peopleFound} />
-                        : (status === 'NOT_FOUND') ?
-                            <PersonNotFound />
-                        : <div />
-                    }
-                </div>
-            )
-        }
-        //dispatch to add PersonFinder has not finished
-        else
-        {
-            return ( <div />)
-        }
-    }
 
-    /**
-        This function is passed the the PersonSearchFields presentational, so a PersonRequest
-        action can be dispatched when a search is submitted.
-    */
-    dispatchPersonRequest(fName, lName, dob)
-    {
-        this.props.actions.PersonRequest(fName,lName,dob,this.props.id);
-    }
+  render() {
 
-    componentWillMount()
-    {
-        console.log(this.props.dispatchPersonFinderAdd);
-        //Add a PersonFinder to the state
-        this.props.dispatchPersonFinderAdd();
-    }
+      const {classes} = this.props;
+      const validCode = this.props.validCode; // is the household code valid?
+      let pantriesList = null;
+
+      if(this.props.validHeadOfHouse){ // is the head of house personal info valid?
+        pantriesList = <div>Show Pantries</div>; // TODO display list of available pantries
+      } else if (validCode && !this.props.validHeadOfHouse && this.props.fName != ''){ // is head of house info invalid?
+        pantriesList = <FailedToSchedule/>; // display a failed to schedule note component
+      }
+
+      return (
+          <div>
+
+              {
+                (validCode) ?
+                  <PeopleSchedule
+                      onSubmit = {this.props.dispatchPersonScheduleRequest}
+                      onLogOff = {this.props.dispatchLogOffRequest}
+                      fName = {this.props.fName}
+                      lName = {this.props.lName}
+                      dob = {this.props.dob}
+                      code = {this.props.code}
+                  />
+                :
+                  <HouseCodePage
+                      onSubmit = {this.props.dispatchEnterHouseCodeRequest}
+                      validCode = {this.props.validCode}
+                      code = {this.props.code}
+                  />
+              }
+
+              {pantriesList}
+          </div>
+      )
+
+  }
 }
 
 const mapStateToProps = (state, ownProps) => {
+    // retrieve state elements as props
+    return {
 
-    //ensure that PersonFinderAdd has finished
-
-    if(state.personFindersState.personFinders[ownProps.id] !== undefined)
-    {
-        return {
-            status : state.personFindersState.personFinders[ownProps.id].status,
-            peopleFound : state.personFindersState.personFinders[ownProps.id].peopleFound
-        }
+        fName : state.personSchedulerState.fName,
+        lName : state.personSchedulerState.lName,
+        dob : state.personSchedulerState.dob,
+        validCode : state.personSchedulerState.validCode,
+        code : state.personSchedulerState.householdCode,
+        validHeadOfHouse : state.personSchedulerState.validHeadOfHouse
     }
 
-    //wait for PersonFinderAdd to update the state
-    else
-    {
-        return {
-            status : "WAITING"
-        }
-    }
-  }
+}
 
+// retireve actions as props
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    dispatchPersonFinderRequest : (fName,lName,dob) => dispatch(PersonRequest(fName,lName,dob,ownProps.id)),
-    dispatchPersonFinderAdd : () => dispatch(PersonFinderAdd(ownProps.id))
+    dispatchPersonScheduleRequest : (fName, lName, dob, code) => dispatch(SchedulePerson(fName, lName, dob, code)),
+    dispatchEnterHouseCodeRequest : (code) => dispatch(EnterHouseCode(code)),
+    dispatchLogOffRequest : () => dispatch(LogOffScheduler()),
   }
 }
 
-//Define required props
-PersonFinderContainer.propTypes = {
-    id : PropTypes.string.isRequired,
+// No required props yet
+SchedulerContainer.propTypes = {
+    //id : PropTypes.string.isRequired,
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PersonFinderContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(SchedulerContainer);
