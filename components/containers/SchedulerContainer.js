@@ -10,11 +10,7 @@ import HouseCodePage from '../presentationals/HouseCodePage';
 import FailedToSchedule from '../presentationals/FailedToSchedule';
 
 //Actions
-import LogOffScheduler from '../../actions/LogOffScheduler';
-import SchedulePerson from '../../actions/SchedulePerson';
-import EnterHouseCode from '../../actions/EnterHouseCode';
-
-
+import {LogOffScheduler, SchedulePerson, EnterHouseCode} from '../../actions/SchedulingActions';
 
 
 /**
