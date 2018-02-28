@@ -4,7 +4,6 @@ import { getState, bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 
 //Presentationals
-import PersonSearchFields from '../presentationals/PersonSearchFields';
 import PeopleSchedule from '../presentationals/PeopleSchedule';
 import HouseCodePage from '../presentationals/HouseCodePage';
 import FailedToSchedule from '../presentationals/FailedToSchedule';
