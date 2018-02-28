@@ -9,6 +9,8 @@ import HelperContainer from './HelperContainer';
 import CodeGenContainer from './CodeGenContainer';
 import LoginContainer from './LoginContainer';
 import PrivateRouteContainer from './PrivateRouteContainer';
+import SchedulerContainer from './SchedulerContainer';
+
 
 import Typography from 'material-ui/Typography';
 
@@ -25,7 +27,7 @@ class Routes extends React.Component {
 					}}/>
 					<Route path="/test" component={() => {
 						return(
-							<Typography type="title" >This is Scotts development space</Typography>
+							<SchedulerContainer id="SchedulerContainer" />
 						);
 					}}/>
 					<Route exact path="/Keenan" component={() => {
