@@ -35,7 +35,7 @@ class App extends React.Component {
       <div className="app">
         <ConnectedRouter history={history}>
           <AppFrameContainer >
-            <Routes history={history} /> 
+            <Routes history={history} />
           </AppFrameContainer>
         </ConnectedRouter>
       </div>
