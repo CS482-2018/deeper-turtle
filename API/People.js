@@ -2,97 +2,135 @@ var people =
 [{
   "fname":"Jerry",
   "lname":"Klaps",
-  "dob":"1993-02-10"
+  "dob":"1993-02-10",
+  "code":"5678",
+  "ishead":false
 },
 {
   "fname":"Juliet",
   "lname":"Pickles",
-  "dob":"1983-05-24"
+  "dob":"1983-05-24",
+  "code":"1234",
+  "ishead":false
 },
 {
   "fname":"Holly",
   "lname":"Hamlet",
-  "dob":"2008-01-05"
+  "dob":"2008-01-05",
+  "code":"5678",
+  "ishead":false
 },
 {
   "fname":"Charlie",
   "lname":"Day",
-  "dob":"1973-10-15"
+  "dob":"1973-10-15",
+  "code":"5678",
+  "ishead":false
 },
 {
   "fname":"Mac",
   "lname":"City",
-  "dob":"1976-08-09"
+  "dob":"1976-08-09",
+  "code":"5678",
+  "ishead":false
 },
 {
   "fname":"Dennis",
   "lname":"Reynolds",
-  "dob":"1969-11-12"
+  "dob":"1969-11-12",
+  "code":"5678",
+  "ishead":false
 },
 {
   "fname":"Dee",
   "lname":"Birds",
-  "dob":"1973-10-15"
+  "dob":"1973-10-15",
+  "code":"5678",
+  "ishead":false
 },
 {
   "fname":"Frank",
   "lname":"Stein",
-  "dob":"1954-12-20"
+  "dob":"1954-12-20",
+  "code":"5678",
+  "ishead":false
 },
 {
   "fname":"Jerry",
   "lname":"Seinfeld",
-  "dob":"1964-06-16"
+  "dob":"1964-06-16",
+  "code":"5678",
+  "ishead":false
 },
 {
   "fname":"Harold",
   "lname":"Mann",
-  "dob":"1975-04-11"
+  "dob":"1975-04-11",
+  "code":"5678",
+  "ishead":false
 },
 {
   "fname":"Molly",
   "lname":"Putsa",
-  "dob":"1930-07-30"
+  "dob":"1930-07-30",
+  "code":"5678",
+  "ishead":false
 },
 {
   "fname":"Stephanie",
   "lname":"Meyers",
-  "dob":"1962-08-30"
+  "dob":"1962-08-30",
+  "code":"5678",
+  "ishead":false
 },
 {
   "fname":"Donald",
   "lname":"Duck",
-  "dob":"1940-09-06"
+  "dob":"1940-09-06",
+  "code":"5678",
+  "ishead":false
 },
 {
   "fname":"Bugs",
   "lname":"Bunny",
-  "dob":"1967-10-15"
+  "dob":"1967-10-15",
+  "code":"5678",
+  "ishead":false
 },
 {
   "fname":"Elmer",
   "lname":"Fudd",
-  "dob":"2013-12-17"
+  "dob":"2013-12-17",
+  "code":"5678",
+  "ishead":false
 },
 {
   "fname":"Minny",
   "lname":"Mouse",
-  "dob":"1925-09-12"
+  "dob":"1925-09-12",
+  "code":"5678",
+  "ishead":false
 },
 {
   "fname":"Grace",
   "lname":"Folders",
-  "dob":"2000-01-22"
+  "dob":"2000-01-22",
+  "code":"5678",
+  "ishead":false
 },
 {
   "fname":"Sheryl",
   "lname":"Buckets",
-  "dob":"1999-07-19"
+  "dob":"1999-07-19",
+  "code":"5678",
+  "ishead":false
 },
 {
   "fname":"Milton",
   "lname":"Butters",
-  "dob":"1988-05-13"
+  "dob":"1988-05-13",
+  "code":"5678",
+  "ishead":false
 }]
 
 var peopleRoutes = function(app)
