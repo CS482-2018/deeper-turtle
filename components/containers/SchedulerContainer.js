@@ -29,7 +29,7 @@ class SchedulerContainer extends React.Component {
       let pantriesList = null;
 
       if(this.props.validHeadOfHouse){ // is the head of house personal info valid?
-        pantriesList = <div>Show Pantries</div>; // TODO display list of available pantries
+        pantriesList = <div>{this.props.availablePantries}</div>; // TODO display list of available pantries
       } else if (validCode && !this.props.validHeadOfHouse && this.props.fName != ''){ // is head of house info invalid?
         pantriesList = <FailedToSchedule/>; // display a failed to schedule note component
       }
@@ -71,7 +71,8 @@ const mapStateToProps = (state, ownProps) => {
         dob : state.personSchedulerState.dob,
         validCode : state.personSchedulerState.validCode,
         code : state.personSchedulerState.householdCode,
-        validHeadOfHouse : state.personSchedulerState.validHeadOfHouse
+        validHeadOfHouse : state.personSchedulerState.validHeadOfHouse,
+        availablePantries : state.personSchedulerState.availablePantries,
     }
 
 }

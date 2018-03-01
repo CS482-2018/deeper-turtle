@@ -23,6 +23,7 @@ function PersonSchedulerReducer(state = initialState, action) {
       schedulePerson.address = action.address;
       // is this person a valid head of household based on a database query?
       schedulePerson.validHeadOfHouse = action.validHeadOfHouse;
+      schedulePerson.availablePantries = action.availablePantries;
       return schedulePerson;
     case 'VALIDATE_HOUSE_CODE':
       let houseCodeState = Object.assign({}, state);
@@ -40,7 +41,7 @@ function PersonSchedulerReducer(state = initialState, action) {
       logOffState.lName = "";
       logOffState.address = ""
       logOffState.dob = "";
-      logOffState.vailablePantries = [];
+      logOffState.availablePantries = [];
       return logOffState;
     default:
       return state

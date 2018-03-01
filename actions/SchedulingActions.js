@@ -35,8 +35,8 @@ const pantries = {
 //action that creates the list and updates the mapStateToProps
 export function pantryOption(neededCap) {
   console.log(pantries.Pantries.length);
-  options = [];
-  for (i = 0; i< pantries.Pantries.length; i++) {
+  var options = [];
+  for (var i = 0; i< pantries.Pantries.length; i++) {
     console.log(pantries.Pantries[i]);
     if (neededCap <= pantries.Pantries[i].Capacity) {
       console.log('found one');
@@ -51,6 +51,7 @@ export function pantryOption(neededCap) {
 // action to add person information to the state
 export function SchedulePerson(fName, lName, dob, code)
 {
+  
   // find if person is valid
   const match = findPerson(fName, lName, dob, code);
 
