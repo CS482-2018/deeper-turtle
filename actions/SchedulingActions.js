@@ -23,7 +23,7 @@ const people = [
   }
 ]
 
-const pantries = {
+const A = {
 "Pantries":[
     {"Name":"St. Helens", "Capacity":1, "Hours": "12-2PM", "Address":"123 Helping Hand, Kalamazoo, MI"},
     {"Name":"First Baptist", "Capacity":0, "Hours":"9-12PM", "Address":"278 Pool Dr, Mattawan, MI"},
@@ -33,29 +33,31 @@ const pantries = {
 };
 
 //action that creates the list and updates the mapStateToProps
-export function pantryOption(neededCap) {
-  console.log(pantries.Pantries.length);
+function pantryOption(neededCap) {
+  //console.log(A.Pantries.length);
   var options = [];
-  for (var i = 0; i< pantries.Pantries.length; i++) {
-    console.log(pantries.Pantries[i]);
-    if (neededCap <= pantries.Pantries[i].Capacity) {
-      console.log('found one');
-      options.push(pantries.Pantries[i]);
+  for (var i = 0; i< A.Pantries.length; i++) {
+    //console.log(A.Pantries[i]);
+    if (neededCap <= A.Pantries[i].Capacity) {
+      //console.log('found one');
+      options.push(A.Pantries[i]);
     }
   }
 
-  console.log(options);
+  //console.log(options);
   return options;
 }
 
 // action to add person information to the state
 export function SchedulePerson(fName, lName, dob, code)
 {
-  
+
   // find if person is valid
   const match = findPerson(fName, lName, dob, code);
-
+  var pan = pantryOption(3);
+  console.log('pan is ', pan);
   const SCHEDULE_PERSON = 'SCHEDULE_PERSON'
+  console.log('is House valid', match.exists);
   return {
     type: SCHEDULE_PERSON,
     fName: fName,
@@ -63,12 +65,15 @@ export function SchedulePerson(fName, lName, dob, code)
     dob : dob,
     address: match.address,
     validHeadOfHouse : match.exists,
+    availablePantries: pan,
   }
 }
 
 
 // TODO Add logic to query database and validate person based on parameters
 function findPerson(firstName, lastName, dob, code){
+  //get your pantries if the person is okay, set capacity at 4 currently
+
   var match = {
     exists: false, // does this person with this code exist in database?
     addr: '', // what is their address?

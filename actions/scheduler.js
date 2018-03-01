@@ -17,20 +17,24 @@ A = {
  function _getPantries() {
 
  }
+ //validates that the people are in the data base.
+ function validatePerson(){
+
+ }
 // should see which have openings
 //needs the react component built out to pass in
 function _haveCapacity(neededCap) {
-  console.log(A.Pantries.length);
-  options = [];
+  //console.log(A.Pantries.length);
+  var options = [];
   for (i = 0; i< A.Pantries.length; i++) {
-    console.log(A.Pantries[i]);
+    //console.log(A.Pantries[i]);
     if (neededCap <= A.Pantries[i].Capacity) {
-      console.log('found one');
+      //console.log('found one');
       options.push(A.Pantries[i]);
     }
   }
 
-  console.log(options);
+  //console.log(options);
   return options;
 }
 
@@ -38,4 +42,5 @@ function _haveCapacity(neededCap) {
 
 
 
-_haveCapacity(3);
+var z = _haveCapacity(3);
+console.log(z);
