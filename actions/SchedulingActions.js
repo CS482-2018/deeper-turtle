@@ -54,7 +54,7 @@ export function SchedulePerson(fName, lName, dob, code)
 
   // find if person is valid
   const match = findPerson(fName, lName, dob, code);
-  var pan = pantryOption(3);
+  var pan = pantryOption(1);
   console.log('pan is ', pan);
   const SCHEDULE_PERSON = 'SCHEDULE_PERSON'
   console.log('is House valid', match.exists);
@@ -137,4 +137,21 @@ export function EnterHouseCode(houseCode)
 // TODO replace logic with database query to check if input code exists
 function findCode(code){
   return codes.includes(code);
+}
+
+
+
+export function SchedulePantryVisit(pantry){
+  const SCHEDULE_PANTRY_VISIT = 'SCHEDULE_PANTRY_VISIT'
+  return {
+    type: SCHEDULE_PANTRY_VISIT,
+    selectedPantry: pantry,
+  }
+}
+
+export function CancelPantryVisit(){
+  const CANCEL_PANTRY_VISIT = 'CANCEL_PANTRY_VISIT'
+  return {
+    type: CANCEL_PANTRY_VISIT,
+  }
 }

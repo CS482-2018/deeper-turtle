@@ -7,9 +7,10 @@ import PropTypes from 'prop-types';
 import PeopleSchedule from '../presentationals/PeopleSchedule';
 import HouseCodePage from '../presentationals/HouseCodePage';
 import FailedToSchedule from '../presentationals/FailedToSchedule';
+import PantryScheduleTable from '../presentationals/PantryScheduleTable'
 
 //Actions
-import {LogOffScheduler, SchedulePerson, EnterHouseCode} from '../../actions/SchedulingActions';
+import {LogOffScheduler, SchedulePerson, EnterHouseCode, CancelPantryVisit, SchedulePantryVisit} from '../../actions/SchedulingActions';
 
 
 /**
@@ -29,7 +30,12 @@ class SchedulerContainer extends React.Component {
       let pantriesList = null;
 
       if(this.props.validHeadOfHouse){ // is the head of house personal info valid?
-        pantriesList = <div>{this.props.availablePantries}</div>; // TODO display list of available pantries
+        pantriesList = (<PantryScheduleTable
+                          pantries = {this.props.availablePantries}
+                          selectedPantry = {this.props.selectedPantry}
+                          onSelect = {this.props.dispatchSchedulePantryVisitRequest}
+                          onCancel = {this.props.dispatchCancelPantryVisitRequest}
+                        />);
       } else if (validCode && !this.props.validHeadOfHouse && this.props.fName != ''){ // is head of house info invalid?
         pantriesList = <FailedToSchedule/>; // display a failed to schedule note component
       }
@@ -73,6 +79,7 @@ const mapStateToProps = (state, ownProps) => {
         code : state.personSchedulerState.householdCode,
         validHeadOfHouse : state.personSchedulerState.validHeadOfHouse,
         availablePantries : state.personSchedulerState.availablePantries,
+        selectedPantry : state.personSchedulerState.selectedPantry,
     }
 
 }
@@ -83,6 +90,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     dispatchPersonScheduleRequest : (fName, lName, dob, code) => dispatch(SchedulePerson(fName, lName, dob, code)),
     dispatchEnterHouseCodeRequest : (code) => dispatch(EnterHouseCode(code)),
     dispatchLogOffRequest : () => dispatch(LogOffScheduler()),
+    dispatchSchedulePantryVisitRequest : (pantry) => dispatch(SchedulePantryVisit(pantry)),
+    dispatchCancelPantryVisitRequest : () => dispatch(CancelPantryVisit()),
   }
 }
 

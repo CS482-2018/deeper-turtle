@@ -6,6 +6,7 @@ import Typography from 'material-ui/Typography';
 import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table';
 import Radio from 'material-ui/Radio';
 import Paper from 'material-ui/Paper';
+import Button from 'material-ui/Button';
 
 const styles = theme => ({
   title: {
@@ -13,7 +14,14 @@ const styles = theme => ({
   },
   container: {
         padding: '30px',
-    },
+        width: 800,
+  },
+  button: {
+    marginTop : theme.spacing.unit,
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+  },
+
 });
 
 
@@ -40,38 +48,67 @@ class PantryScheduleTable extends React.Component {
 
     render() {
         const { classes } = this.props;
-        let { selectable } = this.props;
-        if(selectable === undefined)
-            selectable = false;
+
+        let scheduleBtnVal = null;
+        var selectedPantry = this.props.selectedPantry;
+        
+        if (selectedPantry === undefined){
+          scheduleBtnVal = "SELECT PANTRY";
+        } else {
+          scheduleBtnVal = "DELETE PANTRY";
+        }
         return (
             <Paper className={classes.container}>
                 <Table>
                     <TableHead>
                         <TableRow>
-                            {selectable?<TableCell>Selected</TableCell> : null}
+                            <TableCell>Selected</TableCell>
                             <TableCell>Name</TableCell>
-                            <TableCell>Date of Birth</TableCell>
                             <TableCell>Address</TableCell>
+                            <TableCell>Hours</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {
-                            this.props.people.map((person, index) =>
-                            {
-                                return (<TableRow key={"person_"+index}>
-                                    {selectable
-                                        ? <TableCell padding="checkbox">
-                                            <Radio checked = {this.state.selectedIndex===index} onChange={(event,checked)=>this.handleClick(checked,index)}/>
-                                        </TableCell>
-                                        : null}
-                                    <TableCell>{person.fName + " " + person.lName}</TableCell>
-                                    <TableCell>{person.dob}</TableCell>
-                                    <TableCell>{person.addr}</TableCell>
-                                </TableRow>)
-                            })
+                            (selectedPantry === undefined) ? (
+                              this.props.pantries.map((pantry, index) =>
+                              {
+                                  return (<TableRow key={"pantry_"+index}>
+                                      <TableCell padding="checkbox">
+                                              <Radio checked = {this.state.selectedIndex===index} onChange={(event,checked)=>this.handleClick(checked,index)}/>
+                                      </TableCell>
+                                      <TableCell>{pantry.Name}</TableCell>
+                                      <TableCell>{pantry.Address}</TableCell>
+                                      <TableCell>{pantry.Hours}</TableCell>
+                                  </TableRow>)
+                              })
+                            ) : (
+                              <TableRow>
+                                <TableCell>Scheduled</TableCell>
+                                <TableCell>{selectedPantry.Name}</TableCell>
+                                <TableCell>{selectedPantry.Address}</TableCell>
+                                <TableCell>{selectedPantry.Hours}</TableCell>
+                              </TableRow>
+                            )
+
+
                         }
                     </TableBody>
                 </Table>
+                <Button
+                  variant="raised"
+                  color="primary"
+                  className={classes.button}
+                  onClick={() => {
+                    if(selectedPantry === undefined){
+                      this.props.onSelect(this.props.pantries[this.state.selectedIndex]);
+                    } else {
+                      this.props.onCancel();
+                    }
+                  }}
+                >
+                  {scheduleBtnVal}
+                </Button>
             </Paper>
         );
     }
@@ -85,24 +122,24 @@ class PantryScheduleTable extends React.Component {
     componentDidUpdate(prevProps, prevState)
     {
         //select the first person by default if the people in the table have changed
-        if(prevProps.people !== this.props.people)
+        if(prevProps.pantries !== this.props.pantries)
             this.handleClick(true, 0, true);
 
     }
 
     handleClick(checked, index)
     {
-        if(checked && (this.props.selectable !== undefined || this.props.selectable === false))
+        if(checked)
         {
             this.setState({selectedIndex: index})
-            this.props.onSelect(this.props.people[index]);
+            //this.props.onSelect(this.props.pantries[index]);
         }
     }
 }
 
 //Define required props
 PantryScheduleTable.propTypes = {
-    
+
 }
 
 export default withStyles(styles)(PantryScheduleTable)
