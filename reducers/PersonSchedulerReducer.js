@@ -40,7 +40,7 @@ function PersonSchedulerReducer(state = initialState, action) {
       logOffState.lName = "";
       logOffState.address = ""
       logOffState.dob = "";
-      logOffState.vailablePantries = [];
+      logOffState.avilablePantries = [];
       return logOffState;
     default:
       return state
