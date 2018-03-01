@@ -23,7 +23,7 @@ const people = [
   }
 ]
 
-A = {
+const pantries = {
 "Pantries":[
     {"Name":"St. Helens", "Capacity":1, "Hours": "12-2PM", "Address":"123 Helping Hand, Kalamazoo, MI"},
     {"Name":"First Baptist", "Capacity":0, "Hours":"9-12PM", "Address":"278 Pool Dr, Mattawan, MI"},
@@ -34,13 +34,13 @@ A = {
 
 //action that creates the list and updates the mapStateToProps
 export function pantryOption(neededCap) {
-  console.log(A.Pantries.length);
+  console.log(pantries.Pantries.length);
   options = [];
-  for (i = 0; i< A.Pantries.length; i++) {
-    console.log(A.Pantries[i]);
-    if (neededCap <= A.Pantries[i].Capacity) {
+  for (i = 0; i< pantries.Pantries.length; i++) {
+    console.log(pantries.Pantries[i]);
+    if (neededCap <= pantries.Pantries[i].Capacity) {
       console.log('found one');
-      options.push(A.Pantries[i]);
+      options.push(pantries.Pantries[i]);
     }
   }
 
