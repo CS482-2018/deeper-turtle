@@ -4,6 +4,7 @@
  * defines routes for basic authentication.
  */
 
+const APIRoutes = require("./API/Routes")
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
@@ -18,7 +19,7 @@ const app           = express(),
 //TODO MOVE TO ENV
 const SECRET_KEY = 'mumbojumborandomness';
 
-if (process.env.NODE_ENV !== 'production') 
+if (process.env.NODE_ENV !== 'production')
 {
     const webpack = require('webpack')
     const webpackDevMiddleware = require('webpack-dev-middleware')
@@ -85,6 +86,7 @@ app.post('/verify', function(req, res) {
         res.sendStatus(400);
     }
 })
+APIRoutes.setup(app);
 
 //Send index.html when the user access the web
 app.get("*", function(req, res) {

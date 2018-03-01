@@ -1,0 +1,110 @@
+var people =
+[{
+  "fname":"Jerry",
+  "lname":"Klaps",
+  "dob":"1993-02-10"
+},
+{
+  "fname":"Juliet",
+  "lname":"Pickles",
+  "dob":"1983-05-24"
+},
+{
+  "fname":"Holly",
+  "lname":"Hamlet",
+  "dob":"2008-01-05"
+},
+{
+  "fname":"Charlie",
+  "lname":"Day",
+  "dob":"1973-10-15"
+},
+{
+  "fname":"Mac",
+  "lname":"City",
+  "dob":"1976-08-09"
+},
+{
+  "fname":"Dennis",
+  "lname":"Reynolds",
+  "dob":"1969-11-12"
+},
+{
+  "fname":"Dee",
+  "lname":"Birds",
+  "dob":"1973-10-15"
+},
+{
+  "fname":"Frank",
+  "lname":"Stein",
+  "dob":"1954-12-20"
+},
+{
+  "fname":"Jerry",
+  "lname":"Seinfeld",
+  "dob":"1964-06-16"
+},
+{
+  "fname":"Harold",
+  "lname":"Mann",
+  "dob":"1975-04-11"
+},
+{
+  "fname":"Molly",
+  "lname":"Putsa",
+  "dob":"1930-07-30"
+},
+{
+  "fname":"Stephanie",
+  "lname":"Meyers",
+  "dob":"1962-08-30"
+},
+{
+  "fname":"Donald",
+  "lname":"Duck",
+  "dob":"1940-09-06"
+},
+{
+  "fname":"Bugs",
+  "lname":"Bunny",
+  "dob":"1967-10-15"
+},
+{
+  "fname":"Elmer",
+  "lname":"Fudd",
+  "dob":"2013-12-17"
+},
+{
+  "fname":"Minny",
+  "lname":"Mouse",
+  "dob":"1925-09-12"
+},
+{
+  "fname":"Grace",
+  "lname":"Folders",
+  "dob":"2000-01-22"
+},
+{
+  "fname":"Sheryl",
+  "lname":"Buckets",
+  "dob":"1999-07-19"
+},
+{
+  "fname":"Milton",
+  "lname":"Butters",
+  "dob":"1988-05-13"
+}]
+
+var peopleRoutes = function(app)
+{
+  console.log('people route setp');
+  app.get('/API/People', function(req, res)
+  {
+    res.status(200).json(people)
+  }
+)
+}
+
+module.exports = {
+  peopleRoutes
+}
