@@ -52,7 +52,7 @@ export function SchedulePerson(fName, lName, dob, code)
   // find if person is valid
   const match = findPerson(fName, lName, dob, code);
 
-  var pan = pantryOption(4); // retriev availabale pantries
+  var pan = pantryOption(1); // retriev availabale pantries
 
   const SCHEDULE_PERSON = 'SCHEDULE_PERSON'
 
