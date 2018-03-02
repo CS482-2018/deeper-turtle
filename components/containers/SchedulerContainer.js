@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 
 //Presentationals
 import PeopleSchedule from '../presentationals/PeopleSchedule';
+import PersonSearchFields from '../presentationals/PersonSearchFields';
 import HouseCodePage from '../presentationals/HouseCodePage';
 import FailedToSchedule from '../presentationals/FailedToSchedule';
 import PantryScheduleTable from '../presentationals/PantryScheduleTable'
@@ -45,7 +46,8 @@ class SchedulerContainer extends React.Component {
 
               {
                 (validCode) ?
-                  <PeopleSchedule
+                  <PersonSearchFields
+                      isScheduler = {true}
                       onSubmit = {this.props.dispatchPersonScheduleRequest}
                       onLogOff = {this.props.dispatchLogOffRequest}
                       fName = {this.props.fName}

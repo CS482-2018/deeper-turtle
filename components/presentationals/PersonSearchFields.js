@@ -31,7 +31,7 @@ const DEFAULT_DOB = "2000-01-01";
  * This componenent has three text fields (first name, last name, and date of birth) and a submit
  * button.  When the submit button is pressed, a callback function is called that is passed to the
  * componenet as a prop.
- *  
+ *
  * Required props:
  *		onSubmit: function(fName, lName, dob)
  */
@@ -45,49 +45,67 @@ class PersonSearchFields extends React.Component {
 
 	render() {
 		const { classes } = this.props;
+
 		return (
 			<Paper className={classes.container}>
-		    	<TextField 
-		    		error={!this.state.fName.valid} 
-		    		onChange={this.handleChange('fName')} 
-		    		className={classes.textField} type="text" 
-		    		label="First Name" 
-		    		id="fName" 
+		    	<TextField
+		    		error={!this.state.fName.valid}
+		    		onChange={this.handleChange('fName')}
+		    		className={classes.textField} type="text"
+		    		label="First Name"
+		    		id="fName"
 		    		defaultValue={DEFAULT_FNAME}/>
-		  		<TextField 
-		  			error={!this.state.lName.valid} 
-		  			onChange={this.handleChange('lName')} 
-		  			className={classes.textField} 
-		  			type="text" 
-		  			label="Last Name" 
-		  			id="lName" 
+		  		<TextField
+		  			error={!this.state.lName.valid}
+		  			onChange={this.handleChange('lName')}
+		  			className={classes.textField}
+		  			type="text"
+		  			label="Last Name"
+		  			id="lName"
 		  			defaultValue={DEFAULT_LNAME}/>
-		  		<TextField 
-		  			error={!this.state.dob.valid} 
-		  			onChange={this.handleChange('dob')} 
-		  			className={classes.textField} 
-		  			type="date" 
-		  			label="Date of Birth" 
-		  			id="dob" 
-		  			defaultValue={DEFAULT_DOB} 
+		  		<TextField
+		  			error={!this.state.dob.valid}
+		  			onChange={this.handleChange('dob')}
+		  			className={classes.textField}
+		  			type="date"
+		  			label="Date of Birth"
+		  			id="dob"
+		  			defaultValue={DEFAULT_DOB}
 		  			InputLabelProps={{
 			          shrink: true,
 			        }} />
-		  		<Button 
-		  			variant="raised" 
-		  			color="primary" 
-		  			className={classes.button} 
+		  		<Button
+		  			variant="raised"
+		  			color="primary"
+		  			className={classes.button}
 		  			onClick={ () => {
-			  			
+
 			  			if(!this.state.fName.valid || !this.state.lName.valid || !this.state.dob.valid)
 			  				console.log("invalid data!");
+			  			else if(this.props.isScheduler === true)
+			  				this.props.onSubmit(this.state.fName.value, this.state.lName.value, this.state.dob.value, this.props.code);
 			  			else
-			  				this.props.onSubmit(this.state.fName.value, this.state.lName.value, this.state.dob.value);
-			  			
+                this.props.onSubmit(this.state.fName.value, this.state.lName.value, this.state.dob.value);
 		  			}}
 		  		>
-		  			Submit 
+		  			Submit
 		  		</Button>
+
+          {
+            (this.props.isScheduler) ?
+              <Button
+                variant="raised"
+                color="primary"
+                className={classes.button}
+                onClick={() => {
+
+                  this.props.onLogOff();
+                }}
+              >
+              LOG OFF
+              </Button>
+              : <div></div>
+            }
 			</Paper>
 		)
 	}
