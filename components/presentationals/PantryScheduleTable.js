@@ -21,6 +21,9 @@ const styles = theme => ({
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
   },
+  scheduledTableCell : {
+    color: "green",
+  },
 
 });
 
@@ -51,11 +54,11 @@ class PantryScheduleTable extends React.Component {
 
         let scheduleBtnVal = null;
         var selectedPantry = this.props.selectedPantry;
-        
-        if (selectedPantry === undefined){
-          scheduleBtnVal = "SELECT PANTRY";
+
+        if (selectedPantry === undefined){ // if a pantry has not yet been scheduledS
+          scheduleBtnVal = "SCHEDULE PANTRY VISIT";
         } else {
-          scheduleBtnVal = "DELETE PANTRY";
+          scheduleBtnVal = "CANCEL PANTRY VISIT";
         }
         return (
             <Paper className={classes.container}>
@@ -84,7 +87,7 @@ class PantryScheduleTable extends React.Component {
                               })
                             ) : (
                               <TableRow>
-                                <TableCell>Scheduled</TableCell>
+                                <TableCell className={classes.scheduledTableCell}><b>SCHEDULED</b></TableCell>
                                 <TableCell>{selectedPantry.Name}</TableCell>
                                 <TableCell>{selectedPantry.Address}</TableCell>
                                 <TableCell>{selectedPantry.Hours}</TableCell>
@@ -101,9 +104,9 @@ class PantryScheduleTable extends React.Component {
                   className={classes.button}
                   onClick={() => {
                     if(selectedPantry === undefined){
-                      this.props.onSelect(this.props.pantries[this.state.selectedIndex]);
+                      this.props.onSelect(this.props.pantries[this.state.selectedIndex]); // select this pantry
                     } else {
-                      this.props.onCancel();
+                      this.props.onCancel(); // cancel the scheduled pantry visit
                     }
                   }}
                 >
@@ -132,7 +135,6 @@ class PantryScheduleTable extends React.Component {
         if(checked)
         {
             this.setState({selectedIndex: index})
-            //this.props.onSelect(this.props.pantries[index]);
         }
     }
 }

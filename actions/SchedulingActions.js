@@ -34,12 +34,9 @@ const A = {
 
 //action that creates the list and updates the mapStateToProps
 function pantryOption(neededCap) {
-  //console.log(A.Pantries.length);
   var options = [];
   for (var i = 0; i< A.Pantries.length; i++) {
-    //console.log(A.Pantries[i]);
     if (neededCap <= A.Pantries[i].Capacity) {
-      //console.log('found one');
       options.push(A.Pantries[i]);
     }
   }
@@ -54,10 +51,11 @@ export function SchedulePerson(fName, lName, dob, code)
 
   // find if person is valid
   const match = findPerson(fName, lName, dob, code);
-  var pan = pantryOption(1);
-  console.log('pan is ', pan);
+
+  var pan = pantryOption(4); // retriev availabale pantries
+
   const SCHEDULE_PERSON = 'SCHEDULE_PERSON'
-  console.log('is House valid', match.exists);
+
   return {
     type: SCHEDULE_PERSON,
     fName: fName,
@@ -116,7 +114,7 @@ export function LogOffScheduler()
 
 
 
-// code array for testing
+// code array for testing house codes
 const codes = ['123','abc','1a2b','321','cba']
 
 
@@ -140,7 +138,7 @@ function findCode(code){
 }
 
 
-
+// schedule person with selected pantry.
 export function SchedulePantryVisit(pantry){
   const SCHEDULE_PANTRY_VISIT = 'SCHEDULE_PANTRY_VISIT'
   return {
@@ -149,6 +147,7 @@ export function SchedulePantryVisit(pantry){
   }
 }
 
+// cancel scheduled pantry visit
 export function CancelPantryVisit(){
   const CANCEL_PANTRY_VISIT = 'CANCEL_PANTRY_VISIT'
   return {

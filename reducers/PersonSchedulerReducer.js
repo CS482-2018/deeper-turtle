@@ -43,6 +43,7 @@ function PersonSchedulerReducer(state = initialState, action) {
       logOffState.address = ""
       logOffState.dob = "";
       logOffState.availablePantries = [];
+      logOffState.selectedPantry = undefined;
       return logOffState;
     case 'SCHEDULE_PANTRY_VISIT':
       let scheduleVisitState = Object.assign({}, state);

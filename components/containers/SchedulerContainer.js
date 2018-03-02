@@ -30,7 +30,7 @@ class SchedulerContainer extends React.Component {
       let pantriesList = null;
 
       if(this.props.validHeadOfHouse){ // is the head of house personal info valid?
-        pantriesList = (<PantryScheduleTable
+        pantriesList = (<PantryScheduleTable // list available pantries
                           pantries = {this.props.availablePantries}
                           selectedPantry = {this.props.selectedPantry}
                           onSelect = {this.props.dispatchSchedulePantryVisitRequest}
