@@ -3,8 +3,8 @@ var people =
   "fname":"Jerry",
   "lname":"Klaps",
   "dob":"1993-02-10",
-  "code":"5678",
-  "ishead":false
+  "code":"1234",
+  "ishead":true
 },
 {
   "fname":"Juliet",
@@ -17,98 +17,98 @@ var people =
   "fname":"Holly",
   "lname":"Hamlet",
   "dob":"2008-01-05",
-  "code":"5678",
+  "code":"1234",
   "ishead":false
 },
 {
   "fname":"Charlie",
   "lname":"Day",
   "dob":"1973-10-15",
-  "code":"5678",
+  "code":"1234",
   "ishead":false
 },
 {
   "fname":"Mac",
   "lname":"City",
   "dob":"1976-08-09",
-  "code":"5678",
-  "ishead":false
+  "code":"2345",
+  "ishead":true
 },
 {
   "fname":"Dennis",
   "lname":"Reynolds",
   "dob":"1969-11-12",
-  "code":"5678",
+  "code":"2345",
   "ishead":false
 },
 {
   "fname":"Dee",
   "lname":"Birds",
   "dob":"1973-10-15",
-  "code":"5678",
-  "ishead":false
+  "code":"3456",
+  "ishead":true
 },
 {
   "fname":"Frank",
   "lname":"Stein",
   "dob":"1954-12-20",
-  "code":"5678",
+  "code":"3456",
   "ishead":false
 },
 {
   "fname":"Jerry",
   "lname":"Seinfeld",
   "dob":"1964-06-16",
-  "code":"5678",
+  "code":"3456",
   "ishead":false
 },
 {
   "fname":"Harold",
   "lname":"Mann",
   "dob":"1975-04-11",
-  "code":"5678",
+  "code":"3456",
   "ishead":false
 },
 {
   "fname":"Molly",
   "lname":"Putsa",
   "dob":"1930-07-30",
-  "code":"5678",
-  "ishead":false
+  "code":"4567",
+  "ishead":true
 },
 {
   "fname":"Stephanie",
   "lname":"Meyers",
   "dob":"1962-08-30",
-  "code":"5678",
+  "code":"4567",
   "ishead":false
 },
 {
   "fname":"Donald",
   "lname":"Duck",
   "dob":"1940-09-06",
-  "code":"5678",
+  "code":"4567",
   "ishead":false
 },
 {
   "fname":"Bugs",
   "lname":"Bunny",
   "dob":"1967-10-15",
-  "code":"5678",
+  "code":"4567",
   "ishead":false
 },
 {
   "fname":"Elmer",
   "lname":"Fudd",
   "dob":"2013-12-17",
-  "code":"5678",
+  "code":"4567",
   "ishead":false
 },
 {
   "fname":"Minny",
   "lname":"Mouse",
   "dob":"1925-09-12",
-  "code":"5678",
+  "code":"4567",
   "ishead":false
 },
 {
@@ -116,7 +116,7 @@ var people =
   "lname":"Folders",
   "dob":"2000-01-22",
   "code":"5678",
-  "ishead":false
+  "ishead":true
 },
 {
   "fname":"Sheryl",
@@ -126,17 +126,185 @@ var people =
   "ishead":false
 },
 {
+  "fname":"Harry",
+  "lname":"Planter",
+  "dob":"1999-05-16",
+  "code":"6789",
+  "ishead":true
+},
+{
   "fname":"Milton",
   "lname":"Butters",
   "dob":"1988-05-13",
+  "code":"6789",
+  "ishead":false
+},
+{
+  "fname":"Michael",
+  "lname":"Knotson",
+  "dob":"2013-02-14",
+  "code":"6789",
+  "ishead":false
+},
+{
+  "fname":"Shelby",
+  "lname":"Fishes",
+  "dob":"1994-03-12",
+  "code":"6789",
+  "ishead":false
+},
+{
+  "fname":"Grace",
+  "lname":"Packers",
+  "dob":"1990-07-22",
+  "code":"6789",
+  "ishead":false
+},
+{
+  "fname":"Timothy",
+  "lname":"Packers",
+  "dob":"1989-09-05",
+  "code":"6789",
+  "ishead":false
+},
+{
+  "fname":"Alison",
+  "lname":"Plakard",
+  "dob":"1985-08-13",
+  "code":"7890",
+  "ishead":true
+},
+{
+  "fname":"Dalton",
+  "lname":"Flowers",
+  "dob":"1981-09-05",
+  "code":"7890",
+  "ishead":false
+},
+{
+  "fname":"Carolyn",
+  "lname":"Kikatoo",
+  "dob":"1988-05-13",
+  "code":"7890",
+  "ishead":false
+},
+{
+  "fname":"Fred",
+  "lname":"Flinstone",
+  "dob":"1965-03-14",
+  "code":"7890",
+  "ishead":false
+},
+{
+  "fname":"Sally",
+  "lname":"Myers",
+  "dob":"1997-07-19",
+  "code":"8901",
+  "ishead":true
+},
+{
+  "fname":"Kyle",
+  "lname":"Plikerton",
+  "dob":"1955-10-01",
+  "code":"8901",
+  "ishead":false
+},
+{
+  "fname":"Sasha",
+  "lname":"Nilfson",
+  "dob":"1967-11-03",
+  "code":"8901",
+  "ishead":false
+},
+{
+  "fname":"Chip",
+  "lname":"Dale",
+  "dob":"1977-08-27",
+  "code":"8901",
+  "ishead":false
+},
+{
+  "fname":"North",
+  "lname":"West",
+  "dob":"1988-12-25",
+  "code":"8901",
+  "ishead":false
+},
+{
+  "fname":"Susan",
+  "lname":"Lin",
+  "dob":"1946-07-08",
+  "code":"8901",
+  "ishead":false
+},
+{
+  "fname":"Tanner",
+  "lname":"Valmer",
+  "dob":"1967-04-30",
+  "code":"9012",
+  "ishead":true
+},
+{
+  "fname":"Phillip",
+  "lname":"Duckson",
+  "dob":"2010-04-23",
+  "code":"9012",
+  "ishead":false
+},
+{
+  "fname":"Susan",
+  "lname":"Staples",
+  "dob":"1968-06-12",
   "code":"5678",
+  "ishead":false
+},
+{
+  "fname":"Bobsponge",
+  "lname":"Squaresuit",
+  "dob":"1988-05-21",
+  "code":"0123",
+  "ishead":true
+},
+{
+  "fname":"Elmer",
+  "lname":"Fudd",
+  "dob":"1935-03-19",
+  "code":"0123",
+  "ishead":false
+},
+{
+  "fname":"Patty",
+  "lname":"Burgers",
+  "dob":"1933-01-01",
+  "code":"0123",
+  "ishead":false
+},
+{
+  "fname":"Shaggy",
+  "lname":"Doo",
+  "dob":"1990-02-15",
+  "code":"0123",
+  "ishead":false
+},
+{
+  "fname":"Patrick",
+  "lname":"Olives",
+  "dob":"1919-07-28",
+  "code":"0123",
+  "ishead":false
+},
+{
+  "fname":"Gertrude",
+  "lname":"Bates",
+  "dob":"1988-08-10",
+  "code":"0123",
   "ishead":false
 }]
 
 var peopleRoutes = function(app)
 {
-  console.log('people route setp');
-  app.get('/API/People', function(req, res)
+  console.log('people route setup');
+  app.get('/API/people', function(req, res)
   {
     res.status(200).json(people)
   }
