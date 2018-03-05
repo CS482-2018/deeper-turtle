@@ -82,8 +82,9 @@ class PersonSearchFields extends React.Component {
 
 			  			if(!this.state.fName.valid || !this.state.lName.valid || !this.state.dob.valid)
 			  				console.log("invalid data!");
-			  			else if(this.props.isScheduler === true)
-			  				this.props.onSubmit(this.state.fName.value, this.state.lName.value, this.state.dob.value, this.props.code);
+			  			else if(this.props.houseCode !== undefined)
+                // if a houshold code was included as a prop submit with code
+			  				this.props.onSubmit(this.state.fName.value, this.state.lName.value, this.state.dob.value, this.props.houseCode);
 			  			else
                 this.props.onSubmit(this.state.fName.value, this.state.lName.value, this.state.dob.value);
 		  			}}
@@ -92,7 +93,7 @@ class PersonSearchFields extends React.Component {
 		  		</Button>
 
           {
-            (this.props.isScheduler) ?
+            (this.props.onLogOff !== undefined) ? // include log off button if it exists
               <Button
                 variant="raised"
                 color="primary"
