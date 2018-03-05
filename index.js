@@ -5,6 +5,10 @@ import ReactDOM from 'react-dom';
 import RootReducer from './reducers/RootReducer';
 
 import { applyMiddleware, createStore } from 'redux';
+import { persistStore, persistReducer } from 'redux-persist';
+import storageSession from 'redux-persist/lib/storage/session';
+import { PersistGate } from 'redux-persist/lib/integration/react';
+
 import logger from 'redux-logger'
 import thunk from 'redux-thunk';
 
@@ -25,8 +29,17 @@ const history = createHistory()
 // Build the middleware for intercepting and dispatching navigation actions
 const historyMiddleware = routerMiddleware(history)
 
+const persistConfig = {
+ key: 'root',
+ storage: storageSession,
+};
+
+const persistedReducer = persistReducer(persistConfig, RootReducer)
+
 //initialize store
-let store = createStore(RootReducer, applyMiddleware(thunk, logger, historyMiddleware));
+let store = createStore(persistedReducer, applyMiddleware(thunk, logger, historyMiddleware));
+
+let persistor = persistStore(store);
 
 //top level of React component hierarchy
 class App extends React.Component {
@@ -46,7 +59,9 @@ class App extends React.Component {
 
 ReactDOM.render(
   <Provider store = { store }>
-    <App/>
+    <PersistGate loading={null} persistor={persistor}>
+      <App/>
+    </PersistGate>
   </Provider>,
   document.getElementById('app')
 )
