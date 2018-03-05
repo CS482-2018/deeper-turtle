@@ -11,7 +11,10 @@ var setup = function(app)
   pantries.pantryRoutes(app);
   //console.log(setup)
 }
-
+if (process.env.USE_DB != true)
+{
+  //Send Temp Data
+}
 module.exports = {
   setup:setup
 }

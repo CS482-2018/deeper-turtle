@@ -306,6 +306,7 @@ var peopleRoutes = function(app)
   console.log('people route setup');
   app.get('/API/people', function(req, res)
   {
+    //Check for database connection 
     res.status(200).json(people)
   }
 )
