@@ -3,7 +3,7 @@
  * It defines routes to serve the webpack output and it also
  * defines routes for basic authentication.
  */
-
+require('dotenv').config();
 const APIRoutes = require("./API/Routes")
 const express = require('express');
 const path = require('path');
