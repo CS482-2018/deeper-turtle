@@ -14,7 +14,7 @@ const styles = theme => ({
   },
   container: {
         padding: '30px',
-        width: 800,
+        
   },
   button: {
     marginTop : theme.spacing.unit,

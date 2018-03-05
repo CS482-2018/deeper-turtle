@@ -13,7 +13,6 @@ const styles = theme => ({
     display: 'flex',
     flexWrap: 'wrap',
     padding: '30px',
-    width: 800,
   },
 
 });
