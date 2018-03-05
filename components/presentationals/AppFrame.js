@@ -107,19 +107,19 @@ class AppFrame extends React.Component {
                                 <ListItemText primary="Home" />
                         </ListItem>
                         <ListItem button component={TestPageLink}>
-                                <ListItemText primary="Scott's Dev Page"/>
+                                <ListItemText primary="Scheduler"/>
                         </ListItem>
                         <ListItem button component={KeenanPageLink}>
                                 <ListItemText primary="Keenan Page"/>
                         </ListItem>
                         {this.props.isAuthenticated ?
-                            <div> 
+                            <div>
                                 <ListItem button component={CodeGenLink}>
                                         <ListItemText primary="Code Gen"/>
                                 </ListItem>
                                  <ListItem button component={HelperLink}>
                                         <ListItemText primary="Helper"/>
-                                </ListItem> 
+                                </ListItem>
                             </div>: null
                         }
                 </List>
@@ -142,8 +142,8 @@ class AppFrame extends React.Component {
                             <Typography variant="title" color="inherit" noWrap>
                                 KLF Data Entry
                             </Typography>
-                            {!this.props.isAuthenticated ? 
-                                <Button component={LoginLink} className={classes.button} color="inherit">KLF Login</Button> : 
+                            {!this.props.isAuthenticated ?
+                                <Button component={LoginLink} className={classes.button} color="inherit">KLF Login</Button> :
                                 <Button className={classes.button} color="inherit" onClick={this.props.onLogout}>Logout</Button> }
                         </Toolbar>
                     </AppBar>
