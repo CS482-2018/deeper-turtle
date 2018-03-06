@@ -309,7 +309,6 @@ function matchPerson(firstName, lastName, dob)
 		{
 			foundPeople.push(element);
 		}
-
 	})
 	return foundPeople;
 }
@@ -328,8 +327,7 @@ var peopleRoutes = function(app)
     //Check for database connection
     var foundPeople = matchPerson(req.body.fname, req.body.lname, req.body.dob)
     res.status(200).json(foundPeople)
-  }
-)
+  })
 }
 
 module.exports = {

@@ -50,14 +50,32 @@ var households =
   "numberOfPeople":6
 }]
 
+function matchHousehold(homeAddress, homeCode)
+{
+	var foundHousehold = [];
+	households.forEach((element) =>{
+		if(element.address === homeAddress || element.code === homeCode)
+		{
+			foundHousehold.push(element);
+		}
+	})
+	return foundHousehold;
+}
+
 var householdRoutes = function(app)
 {
   console.log('household route setup');
   app.get('/API/households', function(req, res)
   {
     res.status(200).json(households)
-  }
-)
+  })
+
+  app.post('/API/householdSearch', function(req, res)
+  {
+    //Check for database connection
+    var foundHousehold = matchHousehold(req.body.address, req.body.code)
+    res.status(200).json(foundHousehold)
+  })
 }
 
 module.exports = {
