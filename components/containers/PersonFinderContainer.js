@@ -7,7 +7,7 @@ import { PersonRequest, PersonFinderAdd, PersonFinderDelete } from '../../action
 
 //Presentationals
 import PersonSearchFields from '../presentationals/PersonSearchFields';
-import PersonNotFound from '../presentationals/PersonNotFound';
+import PersonFoundError from '../presentationals/PersonFoundError';
 import PeopleTable from '../presentationals/PeopleTable';
 
 /**
@@ -40,10 +40,10 @@ class PersonFinderContainer extends React.Component {
                             ((onPersonChosen !== undefined) ?
                                 <PeopleTable selectable onSelect={onPersonChosen} people={this.props.peopleFound} /> :
                                 <PeopleTable people={this.props.peopleFound} />)
-                        : (status === 'NOT_FOUND') ?
+                        : (status === 'ERROR') ?
                             ((onPersonChosen !== undefined) ?
-                                <PersonNotFound setChosenUndef={()=>onPersonChosen(undefined)}/> :
-                                <PersonNotFound />)
+                                <PersonFoundError message={this.props.errorMessage} setChosenUndef={()=>onPersonChosen(undefined)}/> :
+                                <PersonFoundError message= {this.props.errorMessage}/>)
                         : <div />
                     }
                 </div>
@@ -87,6 +87,7 @@ const mapStateToProps = (state, ownProps) => {
         return {
             status : state.personFindersState.personFinders[ownProps.id].status,
             peopleFound : state.personFindersState.personFinders[ownProps.id].peopleFound,
+            errorMessage : state.personFindersState.personFinders[ownProps.id].errorMessage,
         }
     }
 

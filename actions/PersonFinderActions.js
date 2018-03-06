@@ -1,28 +1,4 @@
-//CLEAN test data in the absence of an API or DB connection
-															//RIP deep-turtle
-const people =[
-	{
-		fName: 'Test',
-		lName: 'Person',
-		dob: '2000-01-01',
-		addr: '1200 Academy St, Kalamazoo, MI 49006',
-		code: 343469
-	},
-	{
-		fName: 'Test',
-		lName: 'Person',
-		dob: '2000-01-01',
-		addr: '1600 Pennsylvania Ave NW, Washington, DC 20500',
-		code: 252391
-	},
-	{
-		fName: 'Another',
-		lName: 'Person',
-		dob: '2000-01-01',
-		addr: '1200 Academy St, Kalamazoo, MI 49006',
-		code: 15551529
-	}
-]
+import $ from 'jquery';
 
 /**
  * Redux-thunk action that attempts to find a matching person
@@ -30,31 +6,25 @@ const people =[
  */
 export function PersonRequest(firstName, lastName, dob, id) {
   return (dispatch) => {
-  		var foundPeople = matchPerson(firstName, lastName, dob);
-  		if(foundPeople.length == 0)
-  			dispatch(PersonNotFound(id))
-  		else
-  			dispatch(PeopleFound(foundPeople, id));
-  }
-}
-
-/**
- * Returns an array of people with a matching first name, last name, and
- * date of birth.
- * Returns:
- * 		foundPeople: [{},{}]
-*/
-function matchPerson(firstName, lastName, dob)
-{
-	var foundPeople = [];
-	people.forEach((element) =>{
-		if(element.fName === firstName && element.lName === lastName && element.dob === dob)
-		{
-			foundPeople.push(element);
+		var options = {
+				method: "POST",
+				url: "API/peopleSearch",
+				data: JSON.stringify({fname: firstName, lname: lastName, dob: dob}),
+				contentType: "application/json",
 		}
-
-	})
-	return foundPeople;
+		$.ajax(options).then((data, status, j) => {
+			console.log("made request");
+			console.log(data)
+			if(data.length == 0)
+  			dispatch(PersonFoundError(id, "Person not found"))
+  		else
+  			dispatch(PeopleFound(data, id));
+		},
+		(jxhr, status, err) => {
+			console.log("request failed");
+			dispatch(PersonFoundError(id, "Error connecting to API"))
+		})
+  }
 }
 
 /**
@@ -106,11 +76,12 @@ export function PersonFinderDelete(id) {
  * Changes the status of PersonFinder with the given id to
  * indicate that a person was not found.
  */
-export function PersonNotFound(id) {
-  const PERSON_NOT_FOUND = 'PERSON_NOT_FOUND'
+export function PersonFoundError(id, message) {
+  const PERSON_FOUND_ERROR = 'PERSON_FOUND_ERROR'
   return {
-    'type': PERSON_NOT_FOUND,
-    'status': 'NOT_FOUND',
+    'type': PERSON_FOUND_ERROR,
+    'status': 'ERROR',
     'id': id,
+		'message': message
   }
 }

@@ -7,6 +7,7 @@ const initialPersonFinderState = {
   status : "WAITING",
   peopleFound : [],
   chosenPerson: undefined,
+  errorMessage: undefined,
 }
 
 /**
@@ -22,11 +23,12 @@ function PersonFindersReducer(state = initialState, action) {
       finder.status = action.status;
       personFound.personFinders[action.id] = finder;
       return personFound;
-    case 'PERSON_NOT_FOUND':
+    case 'PERSON_FOUND_ERROR':
       let notFound = Object.assign({}, state);
       var finder = Object.assign({}, notFound.personFinders[action.id])
       finder.status = action.status
       finder.chosenPerson = undefined;
+      finder.errorMessage = action.message;
       finder.peopleFound = [];
       notFound.personFinders[action.id] = finder;
       return notFound;
