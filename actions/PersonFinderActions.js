@@ -13,15 +13,12 @@ export function PersonRequest(firstName, lastName, dob, id) {
 				contentType: "application/json",
 		}
 		$.ajax(options).then((data, status, j) => {
-			console.log("made request");
-			console.log(data)
 			if(data.length == 0)
   			dispatch(PersonFoundError(id, "Person not found"))
   		else
   			dispatch(PeopleFound(data, id));
 		},
 		(jxhr, status, err) => {
-			console.log("request failed");
 			dispatch(PersonFoundError(id, "Error connecting to API"))
 		})
   }
