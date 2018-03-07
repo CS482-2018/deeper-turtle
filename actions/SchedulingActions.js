@@ -1,36 +1,7 @@
 // people list to help fake database query. TODO replace with actual database query
-const people = [
-  {
-    fName: 'Test',
-    lName: 'Person',
-    dob: '2000-01-01',
-    addr: '1200 Academy St, Kalamazoo, MI 49006',
-    code: '123'
-  },
-  {
-    fName: 'Test',
-    lName: 'Person',
-    dob: '2000-01-01',
-    addr: '1600 Pennsylvania Ave NW, Washington, DC 20500',
-    code: '321'
-  },
-  {
-    fName: 'Another',
-    lName: 'Person',
-    dob: '2000-01-01',
-    addr: '1200 Academy St, Kalamazoo, MI 49006',
-    code: 'abc'
-  }
-]
-
-const A = {
-"Pantries":[
-    {"Name":"St. Helens", "Capacity":1, "Hours": "12-2PM", "Address":"123 Helping Hand, Kalamazoo, MI"},
-    {"Name":"First Baptist", "Capacity":0, "Hours":"9-12PM", "Address":"278 Pool Dr, Mattawan, MI"},
-    {"Name":"HQ", "Capacity":7, "Hours": "9-5 PM", "Address":"1 Main Street, Kalamazoo, MI"},
-    {"Name":"Bells", "Capacity":7, "Hours": "1-3 PM", "Address": "1200 W. Michigan Avenue, Kalamazoo, MI"}
-]
-};
+const peeps = require('../psuedoConnections/psuedoPeople.js');
+const house = require('../psuedoConnections/psuedoHouseholds.js');
+const pantry = require('../psuedoConnections/psuedoPantries.js');
 
 //action that creates the list and updates the mapStateToProps
 function pantryOption(neededCap) {
@@ -51,8 +22,12 @@ export function SchedulePerson(fName, lName, dob, code)
 
   // find if person is valid
   const match = findPerson(fName, lName, dob, code);
-
-  var pan = pantryOption(1); // retriev availabale pantries
+  //capacity assume 4
+  var tmpCap = 4;
+  if (match.exists) {
+    tmpCap = house.getCapacityCode(code);
+  }
+  var pan = pantry.getAvailable(tmpCap); // retriev availabale pantries
 
   const SCHEDULE_PERSON = 'SCHEDULE_PERSON'
 
@@ -78,22 +53,14 @@ function findPerson(firstName, lastName, dob, code){
   }
 
   // TODO replace this loop with a database query
-  people.forEach((person) =>{
-    // if we found the matching person
-    if (person.fName === firstName && person.lName === lastName && person.dob === dob && person.code === code){
-      match.exists = true;
-      match.address = person.addr;
-      return match;
-    }
-  })
+  tmpPerson = peeps.findPerson(firstName, lastName, dob);
+  if (tmpPerson == 'no person found') { return match;} else {
+    match.exists = true;
+    address = house.getAddressCode(code);
+  }
 
   return match;
 }
-
-
-
-
-
 
 // resets state
 export function LogOffScheduler()
@@ -112,12 +79,6 @@ export function LogOffScheduler()
 
 
 
-
-
-// code array for testing house codes
-const codes = ['123','abc','1a2b','321','cba']
-
-
 export function EnterHouseCode(houseCode)
 {
 
@@ -134,7 +95,7 @@ export function EnterHouseCode(houseCode)
 
 // TODO replace logic with database query to check if input code exists
 function findCode(code){
-  return codes.includes(code);
+  return house.validCode(code);
 }
 
 
@@ -148,7 +109,7 @@ export function SchedulePantryVisit(pantry){
 }
 
 // cancel scheduled pantry visit
-export function CancelPantryVisit(){
+export function CancelPantryVisit() {
   const CANCEL_PANTRY_VISIT = 'CANCEL_PANTRY_VISIT'
   return {
     type: CANCEL_PANTRY_VISIT,
