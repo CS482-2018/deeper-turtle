@@ -30,6 +30,16 @@ const psuedoHouse = {
     }
     return cap;
   },
+  validCode: (inputCode) => {
+    v = false;
+    for (var i = 0; i < houses.length; i++) {
+      if (houses[i].code == inputCode) {
+        v = true;
+        break;
+      }
+    }
+    return v;
+  },
 };
 
 //console.log(psuedoHouse.getPeople('829 Powell St, Kalamazoo, MI'));

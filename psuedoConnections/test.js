@@ -1,5 +1,6 @@
 const peeps = require('./psuedoPeople.js');
 const house = require('./psuedoHouseholds.js');
+const pantry = require('./psuedoPantries.js');
 
 console.log('Tests starting');
 
@@ -54,11 +55,22 @@ if (temp == 'No people at that address, check input') {
   console.log('check');
 } else {console.log('failed');}
 
+console.log('Testing Valid Code positive');
+if (house.validCode('4567')) { console.log('check');} else {console.log('failed');}
+
+if (house.validCode('BATMAN')) { console.log('failed');} else {console.log('check');}
+
+//tests within the dummy pantries
+
 console.log('Testing out capacity get, positive');
 temp = house.getCapacityAddress('829 Powell St, Kalamazoo, MI');
-if (temp ==6) { console.log('check');} else console.log('failed');
+if (temp == 6) { console.log('check');} else console.log('failed');
 
 console.log('Testing out capacity get, negative/nonsense');
 
 temp = house.getCapacityAddress('829jdhlgnfkm; Powell St, Kalamazoo, MI');
 if (temp == 'unknown') {console.log('check');} else {console.log('failed');}
+
+console.log('Testing pantry functions');
+
+if(pantry.updateCap(3,'Bells')) {console.log('check');} else {console.log('failed');}
