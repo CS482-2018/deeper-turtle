@@ -4,25 +4,25 @@ import $ from 'jquery';
  * Redux-thunk action that attempts to find a matching person
  * and dispatches an apropriate action based on the result.
  */
-export function PersonRequest(firstName, lastName, dob, id) {
-  return (dispatch) => {
-		var options = {
-				method: "POST",
-				url: "API/peopleSearch",
-				data: JSON.stringify({fname: firstName, lname: lastName, dob: dob}),
-				contentType: "application/json",
-		}
-		$.ajax(options).then((data, status, j) => {
-			if(data.length == 0)
-  			dispatch(PersonFoundError(id, "Person not found"))
-  		else
-  			dispatch(PeopleFound(data, id));
-		},
-		(jxhr, status, err) => {
-			dispatch(PersonFoundError(id, "Error connecting to API"))
-		})
-  }
-}
+ export function PersonRequest(firstName, lastName, dob, id) {
+   return (dispatch) => {
+ 		var options = {
+ 				method: "POST",
+ 				url: "API/people/findPerson",
+ 				data: JSON.stringify({firstName: firstName, lastName: lastName, birthday: dob}),
+ 				contentType: "application/json",
+ 		}
+ 		$.ajax(options).then((data, status, j) => {
+ 			if(data === 'no person found')
+   			dispatch(PersonFoundError(id, "Person not found"))
+   		else
+   			dispatch(PeopleFound([data], id));
+ 		},
+ 		(jxhr, status, err) => {
+ 			dispatch(PersonFoundError(id, "Error connecting to API"))
+ 		})
+   }
+ }
 
 /**
 *	Adds the found people to the state of the PersonFinder with

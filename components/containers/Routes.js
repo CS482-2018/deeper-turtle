@@ -11,6 +11,7 @@ import LoginContainer from './LoginContainer';
 import PrivateRouteContainer from './PrivateRouteContainer';
 import SchedulerContainer from './SchedulerContainer';
 
+import HomePage from '../presentationals/HomePage';
 
 import Typography from 'material-ui/Typography';
 
@@ -22,18 +23,12 @@ class Routes extends React.Component {
 				<div>
 					<Route exact path="/" component={() => {
 						return(
-						 	<PersonFinderContainer id="personFinder1" />
+						 	<HomePage />
 						);
 					}}/>
 					<Route path="/test" component={() => {
 						return(
 							<SchedulerContainer id="SchedulerContainer" />
-						);
-					}}/>
-					<Route exact path="/Keenan" component={() => {
-						return(
-							<PersonFinderContainer id="personFinder1" />
-							//<Typography type="title" >Keenan Page</Typography>
 						);
 					}}/>
 					<PrivateRouteContainer path="/code-gen" component={() => {
