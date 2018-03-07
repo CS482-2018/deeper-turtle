@@ -74,3 +74,6 @@ if (temp == 'unknown') {console.log('check');} else {console.log('failed');}
 console.log('Testing pantry functions');
 
 if(pantry.updateCap(3,'Bells')) {console.log('check');} else {console.log('failed');}
+
+console.log('Sharifs anal test');
+if (peeps.isPersonPart('1234', 'Charlie', 'Day', '1973-10-15')) {console.log('CHECK SHARIF');} else {console.log(peeps.isPersonPart('1234', 'Gertrude', 'Bates', '1988-08-10'));}
