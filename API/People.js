@@ -24,6 +24,24 @@ var peopleRoutes = function(app)
 		var realPerson = peeps.isValid(req.body.firstName, req.body.lastName, req.body.birthday)
 		res.status(200).json(realPerson)
 	})
+
+	app.post('/API/people/isPersonPart', function(req, res)
+	{
+		var partPerson = peeps.isPersonPart(req.body.code, req.body.fName, req.body.lName, req.body.dob)
+		res.status(200).json(partPerson)
+	})
+
+	app.post('/API/people/isHead', function(req, res)
+	{
+		var headPerson = peeps.isHead(req.body.firstName, req.body.lastName, req.body.birthday)
+		res.status(200).json(headPerson)
+	})
+
+	app.post('/API/people/getByHouse', function(req, res)
+	{
+		var peopleHouse = peeps.getByHouse(req.body.houseCode)
+		res.status(200).json(peopleHouse)
+	})
 }
 
 module.exports = {
