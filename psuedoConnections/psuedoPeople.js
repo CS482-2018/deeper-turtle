@@ -3,7 +3,7 @@ const people = require('./dummyPeople.js');
 const psuedoPeople = {
   //method that finds a person given fname, lname, and dob
   findPerson: (firstName, lastName, birthday) => {
-    console.log('successfully within psudeo find person');
+    //console.log('successfully within psudeo find person');
     for (var i = 0; i < people.length; i ++ ) {
       //console.log(people[i]);
       //if birthday matches check names
@@ -19,7 +19,7 @@ const psuedoPeople = {
   //method that checks if a person is head of house
   isHead: (firstName, lastName, birthday) => {
     //find the individual
-    p = findPerson(firstName, lastName, birthday);
+    p = psuedoPeople.findPerson(firstName, lastName, birthday);
     if (p == 'no person found') {
       return 'person not in system';
     } else {
@@ -29,7 +29,7 @@ const psuedoPeople = {
 
   //method to detect whether a person is valid
   isValid: (firstName, lastName, birthday) => {
-    p = findPerson(firstName, lastName, birthday);
+    p = psuedoPeople.findPerson(firstName, lastName, birthday);
     if (p == 'no person found') {
       return false;
     } else {
@@ -51,7 +51,7 @@ const psuedoPeople = {
 
 };
 
-console.log(psuedoPeople.findPerson('Gertrude','Bates','1988-08-10'));
+//console.log(psuedoPeople.findPerson('Gertrude','Bates','1988-08-10'));
 //console.log(psuedoPeople.getByHouse('0123'));
 //functions to search and find people
 module.exports = psuedoPeople

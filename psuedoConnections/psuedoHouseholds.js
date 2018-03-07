@@ -1,67 +1,37 @@
-var peeps = require('./psuedoPeople');
+const houses = require('./dummyHouseholds.js');
+const peeps = require('./psuedoPeople.js');
 
-console.log(peeps.findPerson('not', 'Bates', '1988-08-10'));
+//console.log(peeps.findPerson('Gertrude', 'Bates', '1988-08-10'));
+//console.log(houses);
 
-var households =
-[{
-  "address":"768 Lovell St, Kalamazoo, MI",
-  "code":"1234",
-  "numberOfPeople":4
-},
-{
-  "address":"567 Bing Dr, Mattawan, MI",
-  "code":"2345",
-  "numberOfPeople":2
-},
-{
-  "address":"439 Spring St, Portage, MI",
-  "code":"3456",
-  "numberOfPeople":4
-},
-{
-  "address":"829 Powell St, Kalamazoo, MI",
-  "code":"4567",
-  "numberOfPeople":6
-},
-{
-  "address":"6302 Darling Rd, Kalamazoo, MI",
-  "code":"5678",
-  "numberOfPeople":2
-},
-{
-  "address":"278 Plastic St, Kalamazoo, MI",
-  "code":"6789",
-  "numberOfPeople":6
-},
-{
-  "address":"587 King Ct, Kalamazoo, MI",
-  "code":"7890",
-  "numberOfPeople":4
-},
-{
-  "address":"198 Gold St, Kalamazoo, MI",
-  "code":"8901",
-  "numberOfPeople":6
-},
-{
-  "address":"555 Lake St, Kalamazoo, MI",
-  "code":"9012",
-  "numberOfPeople":2
-},
-{
-  "address":"3752 Oak St, Kalamazoo, MI",
-  "code":"0123",
-  "numberOfPeople":6
-}];
 
 const psuedoHouse = {
   getPeople: (address) => {
-    code = 'No pantry at that address, check input';
-    for (var i = 0; i < pantries.length; i++) {
-      if (pantries[i].address == address) {
-        code = pantries[i].code;
+    let code = 'No people at that address, check input';
+    for (var i = 0; i < houses.length; i++) {
+      if (houses[i].address == address) {
+        code = houses[i].code;
+        break;
       }
-
     }
-  }
+
+    if (code == 'No people at that address, check input') {
+      return code;
+    }
+    return peeps.getByHouse(code);
+  },
+  getCapacityAddress: (address) => {
+    let cap = 'unknown';
+    for (var i = 0; i < houses.length; i++) {
+      if (houses[i].address == address) {
+        cap = houses[i].numberOfPeople;
+        break;
+      }
+    }
+    return cap;
+  },
 };
+
+//console.log(psuedoHouse.getPeople('829 Powell St, Kalamazoo, MI'));
+//console.log(psuedoHouse.getCapacityAddress('829 Powell St, Kalamazoo, MI'));
+module.exports = psuedoHouse;
