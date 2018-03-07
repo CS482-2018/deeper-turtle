@@ -26,7 +26,7 @@ const styles = theme => ({
  *
  * Optionally, you can use it to select a person in the table and can have the componenet
  * call a callback function once the person has been selected.
- * 
+ *
  * Required props:
  *      people: Array of people to be displayed
  *
@@ -59,12 +59,12 @@ class PeopleTable extends React.Component {
                             this.props.people.map((person, index) =>
                             {
                                 return (<TableRow key={"person_"+index}>
-                                    {selectable 
+                                    {selectable
                                         ? <TableCell padding="checkbox">
                                             <Radio checked = {this.state.selectedIndex===index} onChange={(event,checked)=>this.handleClick(checked,index)}/>
-                                        </TableCell> 
+                                        </TableCell>
                                         : null}
-                                    <TableCell>{person.fName + " " + person.lName}</TableCell>
+                                    <TableCell>{person.fname + " " + person.lname}</TableCell>
                                     <TableCell>{person.dob}</TableCell>
                                     <TableCell>{person.addr}</TableCell>
                                 </TableRow>)
@@ -90,7 +90,7 @@ class PeopleTable extends React.Component {
 
     }
 
-    handleClick(checked, index) 
+    handleClick(checked, index)
     {
         if(checked && (this.props.selectable !== undefined || this.props.selectable === false))
         {

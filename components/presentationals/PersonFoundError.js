@@ -20,14 +20,14 @@ const styles = theme => ({
  * Optional props:
  *    setChosenUndef: Function, this function is called on mount to set the chosenPerson to undefined
  */
-class PersonNotFound extends React.Component {
+class PersonFoundError extends React.Component {
 
     render() {
         const { classes } = this.props;
         return (
             <Paper className={classes.container}>
-                <Typography className={classes.title} type="headline"> Person Not Found </Typography>
-            </Paper> 
+                <Typography className={classes.title} type="headline"> {this.props.message} </Typography>
+            </Paper>
         );
     }
 
@@ -39,8 +39,8 @@ class PersonNotFound extends React.Component {
 
 }
 
-PersonNotFound.propTypes = {
+PersonFoundError.propTypes = {
   setChosenUndef: PropTypes.func,
 }
 
-export default withStyles(styles)(PersonNotFound)
+export default withStyles(styles)(PersonFoundError)

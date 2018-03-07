@@ -27,7 +27,7 @@ const styles = theme => ({
  *		onGenerate: Func, the function to run when the generate button is clicked
  *		onDelete: Func, the function to run when the delete button is clicked
  */
-class CodeDisplay extends React.Component 
+class CodeDisplay extends React.Component
 {
 	render()
 	{
@@ -36,12 +36,12 @@ class CodeDisplay extends React.Component
 			<Paper className={classes.container}>
 				<Grid container spacing={24} >
 					<Grid item xs={9}>
-						<Typography variant="title">{this.props.person.fName + " " + this.props.person.lName + " (" + this.props.person.addr + ")"}</Typography><br/>
+						<Typography variant="title">{this.props.person.fname + " " + this.props.person.lname + " (" + this.props.person.addr + ")"}</Typography><br/>
 					</Grid>
 					<Grid item xs={3}>
-						<Button 
-		  					variant="raised" 
-		  					color="primary"  
+						<Button
+		  					variant="raised"
+		  					color="primary"
 		  					onClick={this.props.onGenerate}
 		  				>Generate Code</Button>
 					</Grid>
@@ -51,10 +51,10 @@ class CodeDisplay extends React.Component
 							 <Typography variant="display3" className={classes.code}>No Assigned Code</Typography>}
 					</Grid>
 					<Grid item xs={3}>
-						<Button 
-		  					variant="raised" 
+						<Button
+		  					variant="raised"
 		  					color="primary"
-		  					onClick={this.props.onDelete}  
+		  					onClick={this.props.onDelete}
 		  				>Delete Code</Button>
 					</Grid>
 				</Grid>
