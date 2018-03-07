@@ -301,7 +301,7 @@ var people =
   "ishead":false
 }]
 
-function matchPerson(firstName, lastName, dob)
+export function matchPerson(firstName, lastName, dob)
 {
 	var foundPeople = [];
 	people.forEach((element) =>{
