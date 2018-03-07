@@ -18,8 +18,8 @@ const psuedoPantries = {
   getAvailable: (capacity) => {
     var o = [];
     for (var i = 0; i< pantries.length; i++) {
-      if (neededCap <= pantries[i].Capacity) {
-        o.push(A.Pantries[i]);
+      if (capacity <= pantries[i].Capacity) {
+        o.push(pantries[i]);
       }
     }
     return o;
