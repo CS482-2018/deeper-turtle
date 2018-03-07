@@ -16,6 +16,18 @@ const psuedoPeople = {
     return 'no person found';
   },
 
+  isPersonPart: (code, fName,lName, dob) => {
+    let temp = psuedoPeople.getByHouse(code);
+    let v = false;
+    for (var i = 0; i < temp.length; i++) {
+      console.log(temp[i]);
+      if (temp[i].fname == fName && temp[i].lname == lName && temp[i].dob==dob) {
+        v = true;
+        break;
+      }
+    }
+    return v;
+  },
   //method that checks if a person is head of house
   isHead: (firstName, lastName, birthday) => {
     //find the individual

@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 // people list to help fake database query. TODO replace with actual database query
 const peeps = require('../psuedoConnections/psuedoPeople.js');
 const house = require('../psuedoConnections/psuedoHouseholds.js');
@@ -16,7 +18,7 @@ export function SchedulePerson(fName, lName, dob, code) {
   if (match.exists) {
     tmpCap = house.getCapacityCode(code);
   }
-  var pan = pantry.getAvailable(tmpCap); // retriev availabale pantries
+  var pan = pantry.getAvailable(tmpCap); // retrieve availabale pantries
 
   const SCHEDULE_PERSON = 'SCHEDULE_PERSON';
 
