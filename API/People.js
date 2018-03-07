@@ -2,18 +2,6 @@ const peeps = require('../psuedoConnections/psuedoPeople.js');
 const house = require('../psuedoConnections/psuedoHouseholds.js');
 const pantry = require('../psuedoConnections/psuedoPantries.js');
 
-function matchPerson(firstName, lastName, dob)
-{
-	var foundPeople = [];
-	people.forEach((element) =>{
-		if(element.fname === firstName && element.lname === lastName && element.dob === dob)
-		{
-			foundPeople.push(element);
-		}
-	})
-	return foundPeople;
-}
-
 var peopleRoutes = function(app)
 {
   console.log('people route setup');
@@ -23,12 +11,19 @@ var peopleRoutes = function(app)
     res.status(200).json(people)
   })
 
-  app.post('/API/peopleSearch', function(req, res)
+  app.post('/API/people/findPerson', function(req, res)
   {
+		console.log(req.body);
     //Check for database connection
-    var foundPeople = matchPerson(req.body.fname, req.body.lname, req.body.dob)
-    res.status(200).json(foundPeople)
+    var foundPerson = peeps.findPerson(req.body.firstName, req.body.lastName, req.body.birthday)
+    res.status(200).json(foundPerson)
   })
+
+	app.post('/API/people/isValid', function(req, res)
+	{
+		var realPerson = peeps.isValid(req.body.firstName, req.body.lastName, req.body.birthday)
+		res.status(200).json(realPerson)
+	})
 }
 
 module.exports = {
