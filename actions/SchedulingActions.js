@@ -7,51 +7,69 @@ const pantry = require('../psuedoConnections/psuedoPantries.js');
 
 //action that creates the list and updates the mapStateToProps
 
+export function SchedulePersonRequest(firstName, lastName, dob, code) {
+  var person = {
+    fname: firstName,
+    lname: lastName,
+    dob: dob,
+    address : "",
+    validHeadOfHouse: false,
+    availablePantries: [],
+
+  }
+
+  return (dispatch) => {
+		var options = {
+				method: "POST",
+				url: "API/people/schedulePerson",
+				data: JSON.stringify({code: code, fname: firstName, lname: lastName, dob: dob}),
+				contentType: "application/json",
+		}
+		$.ajax(options).then((data, status, j) => {
+      dispatch(SchedulePerson(data))
+		},
+		(jxhr, status, err) => {
+			dispatch(SchedulePerson(person))
+		})
+  }
+}
+
+export function ValidateHouseCodeRequest(houseCode) {
+
+  return (dispatch) => {
+		var options = {
+				method: "POST",
+				url: "API/houses/validCode",
+				data: JSON.stringify({code: houseCode}),
+				contentType: "application/json",
+		}
+		$.ajax(options).then((data, status, j) => {
+      dispatch(EnterHouseCode(houseCode, data))
+		},
+		(jxhr, status, err) => {
+			dispatch(EnterHouseCode(houseCode, data))
+		})
+  }
+}
+
 
 // action to add person information to the state
-export function SchedulePerson(fName, lName, dob, code) {
+export function SchedulePerson(scheduledPerson) {
 
-  // find if person is valid
-  const match = findPerson(fName, lName, dob, code);
-  //capacity assume 4
-  var tmpCap = 4;
-  if (match.exists) {
-    tmpCap = house.getCapacityCode(code);
-  }
-  var pan = pantry.getAvailable(tmpCap); // retrieve availabale pantries
 
   const SCHEDULE_PERSON = 'SCHEDULE_PERSON';
 
   return {
     type: SCHEDULE_PERSON,
-    fName: fName,
-    lName: lName,
-    dob: dob,
-    address: match.address,
-    validHeadOfHouse: match.exists,
-    availablePantries: pan,
+    fName: scheduledPerson.fname,
+    lName: scheduledPerson.lname,
+    dob: scheduledPerson.dob,
+    address : scheduledPerson.address,
+    validHeadOfHouse: scheduledPerson.validHeadOfHouse,
+    availablePantries: scheduledPerson.availablePantries,
   };
 }
 
-
-// TODO Add logic to query database and validate person based on parameters
-function findPerson(firstName, lastName, dob, code) {
-  //get your pantries if the person is okay, set capacity at 4 currently
-
-  var match = {
-    exists: false, // does this person with this code exist in database?
-    addr: '', // what is their address?
-  };
-
-  // TODO replace this loop with a database query
-  var tmpPerson = peeps.findPerson(firstName, lastName, dob);
-  if (tmpPerson == 'no person found') { return match;} else {
-    match.exists = true;
-    match.address = house.getAddressCode(code);
-  }
-
-  return match;
-}
 
 // resets state
 export function LogOffScheduler() {
@@ -62,9 +80,7 @@ export function LogOffScheduler() {
   };
 }
 
-export function EnterHouseCode(houseCode) {
-
-  var valid = findCode(houseCode);
+export function EnterHouseCode(houseCode, valid) {
 
   const VALIDATE_HOUSE_CODE = 'VALIDATE_HOUSE_CODE';
   return {

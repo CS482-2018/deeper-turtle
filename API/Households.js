@@ -29,6 +29,13 @@ var householdRoutes = function(app)
     res.status(200).json(foundHousehold)
   })
 
+	app.post('/API/houses/validCode', function(req, res)
+  {
+    //Check for database connection
+    var validCode = house.validCode(req.body.code)
+    res.status(200).json(validCode)
+  })
+
 }
 
 module.exports = {

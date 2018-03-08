@@ -43,6 +43,10 @@ if (peeps.isValid('Gjk', 'Bates', '1988-08-10')) {
 //tests within the dummyHouseholds
 console.log('Testing household fx');
 
+console.log('Testing get address');
+temp = house.getAddressCode('1234');
+console.log(temp);
+
 console.log('Testing get people positive');
 temp = house.getPeople('829 Powell St, Kalamazoo, MI');
 if (temp == 'No people at that address, check input') {
