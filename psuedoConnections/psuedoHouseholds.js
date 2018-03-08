@@ -54,7 +54,7 @@ const psuedoHouse = {
     var v = false;
     for (var i = 0; i < houses.length; i++) {
       if (houses[i].code == inputCode) {
-        return true;
+        v = true;
         break;
       }
     }
