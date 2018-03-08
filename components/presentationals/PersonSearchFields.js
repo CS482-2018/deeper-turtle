@@ -24,9 +24,9 @@ const styles = theme => ({
 });
 
 //Default values should only stay in for testing purposes.
-const DEFAULT_FNAME = "Test";
-const DEFAULT_LNAME = "Person";
-const DEFAULT_DOB = "2000-01-01";
+const DEFAULT_FNAME = "";
+const DEFAULT_LNAME = "";
+const DEFAULT_DOB = "";
 /*
  * This componenent has three text fields (first name, last name, and date of birth) and a submit
  * button.  When the submit button is pressed, a callback function is called that is passed to the

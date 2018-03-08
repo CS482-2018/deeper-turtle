@@ -26,7 +26,7 @@ class Routes extends React.Component {
 						 	<HomePage />
 						);
 					}}/>
-					<Route path="/test" component={() => {
+					<Route path="/scheduler" component={() => {
 						return(
 							<SchedulerContainer id="SchedulerContainer" />
 						);

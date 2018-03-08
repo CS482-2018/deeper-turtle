@@ -39,7 +39,7 @@ export function ValidateHouseCodeRequest(houseCode) {
   return (dispatch) => {
 		var options = {
 				method: "POST",
-				url: "API/houses/validCode",
+				url: "API/households/validCode",
 				data: JSON.stringify({inputCode: houseCode}),
 				contentType: "application/json",
 		}
