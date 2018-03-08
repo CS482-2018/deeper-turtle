@@ -14,7 +14,7 @@ const psuedoHouse = {
 
         return houses[i].address;
       }
-
+      
     }
     return adr;
   },

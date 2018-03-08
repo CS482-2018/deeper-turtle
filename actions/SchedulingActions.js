@@ -40,7 +40,7 @@ export function ValidateHouseCodeRequest(houseCode) {
 		var options = {
 				method: "POST",
 				url: "API/houses/validCode",
-				data: JSON.stringify({code: houseCode}),
+				data: JSON.stringify({inputCode: houseCode}),
 				contentType: "application/json",
 		}
 		$.ajax(options).then((data, status, j) => {

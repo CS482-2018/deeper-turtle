@@ -94,7 +94,6 @@ class AppFrame extends React.Component {
         const TestPageLink = props => <Link to="/test" {...props} />
         const HomePageLink = props => <Link to="/" {...props} />
         const CodeGenLink = props => <Link to="/code-gen" {...props} />
-        const KeenanPageLink = props => <Link to="/Keenan" {...props} />
         const HelperLink = props => <Link to="/Helper" {...props} />
         const LoginLink = props => <Link to="/login" {...props} />
 
@@ -108,9 +107,6 @@ class AppFrame extends React.Component {
                         </ListItem>
                         <ListItem button component={TestPageLink}>
                                 <ListItemText primary="Scheduler"/>
-                        </ListItem>
-                        <ListItem button component={KeenanPageLink}>
-                                <ListItemText primary="Keenan Page"/>
                         </ListItem>
                         {this.props.isAuthenticated ?
                             <div>
