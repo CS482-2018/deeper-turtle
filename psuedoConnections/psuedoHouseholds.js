@@ -12,11 +12,10 @@ const psuedoHouse = {
         adr = houses[i].address;
         break;
       }
-
-      return adr;
     }
+    return adr;
   },
-  
+
   getPeople: (address) => {
     let code = 'No people at that address, check input';
     for (var i = 0; i < houses.length; i++) {

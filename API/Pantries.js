@@ -2,18 +2,6 @@ const peeps = require('../psuedoConnections/psuedoPeople.js');
 const house = require('../psuedoConnections/psuedoHouseholds.js');
 const pantry = require('../psuedoConnections/psuedoPantries.js');
 
-function matchPantry(name, address)
-{
-	var foundPantry = [];
-	pantries.forEach((element) =>{
-		if(element.Name === name || element.Address === address)
-		{
-			foundPantry.push(element);
-		}
-	})
-	return foundPantry;
-}
-
 var pantryRoutes = function(app)
 {
   console.log('pantry route setup');
@@ -21,11 +9,19 @@ var pantryRoutes = function(app)
   {
     res.status(200).json(pantries)
   })
-  app.post('/API/pantrySearch', function(req, res)
+
+  app.post('/API/pantries/updateCap', function(req, res)
   {
     //Check for database connection
-    var foundPantry = matchPantry(req.body.Name, req.body.Address)
-    res.status(200).json(foundPantry)
+    var newCap = pantry.updateCap(req.body.revisedCapacity, req.body.name)
+    res.status(200).json(newCap)
+  })
+	
+	app.post('/API/pantries/getAvailable', function(req, res)
+  {
+    //Check for database connection
+    var availablePantries = pantry.getAvailable(req.body.capacity)
+    res.status(200).json(availablePantries)
   })
 }
 
