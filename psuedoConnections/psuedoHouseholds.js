@@ -13,10 +13,10 @@ const psuedoHouse = {
       if (houses[i].code == inputCode) {
 
         return houses[i].address;
-        break;
       }
-      return adr;
+
     }
+    return adr;
   },
 
   getPeople: (address) => {

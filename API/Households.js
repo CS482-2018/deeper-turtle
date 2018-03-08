@@ -31,7 +31,7 @@ var householdRoutes = function(app)
 
 	app.post('/API/houses/validCode', function(req, res)
   {
-    //Check for database connection
+    // return if the given code is linked to a valid house
     var validCode = house.validCode(req.body.code)
     res.status(200).json(validCode)
   })
