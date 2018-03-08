@@ -10,7 +10,7 @@ import FailedToSchedule from '../presentationals/FailedToSchedule';
 import PantryScheduleTable from '../presentationals/PantryScheduleTable'
 
 //Actions
-import {LogOffScheduler, SchedulePerson, EnterHouseCode, CancelPantryVisit, SchedulePantryVisit} from '../../actions/SchedulingActions';
+import {LogOffScheduler, SchedulePersonRequest, ValidateHouseCodeRequest, CancelPantryVisit, SchedulePantryVisit} from '../../actions/SchedulingActions';
 
 
 /**
@@ -84,8 +84,8 @@ const mapStateToProps = (state, ownProps) => {
 // retireve actions as props
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    dispatchPersonScheduleRequest : (fName, lName, dob, code) => dispatch(SchedulePerson(fName, lName, dob, code)),
-    dispatchEnterHouseCodeRequest : (code) => dispatch(EnterHouseCode(code)),
+    dispatchPersonScheduleRequest : (fName, lName, dob, code) => dispatch(SchedulePersonRequest(fName, lName, dob, code)),
+    dispatchEnterHouseCodeRequest : (code) => dispatch(ValidateHouseCodeRequest(code)),
     dispatchLogOffRequest : () => dispatch(LogOffScheduler()),
     dispatchSchedulePantryVisitRequest : (pantry) => dispatch(SchedulePantryVisit(pantry)),
     dispatchCancelPantryVisitRequest : () => dispatch(CancelPantryVisit()),

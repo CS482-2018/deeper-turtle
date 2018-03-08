@@ -6,7 +6,7 @@ const initialState = {
   fName : "",
   lName : "",
   dob : "",
-  address: "",
+  address : "",
   validCode : false,
   validHeadOfHouse : false,
   availablePantries : [],
@@ -18,13 +18,13 @@ function PersonSchedulerReducer(state = initialState, action) {
     case 'SCHEDULE_PERSON':
       let schedulePerson = Object.assign({}, state);
       // adds persons information to the state
-      schedulePerson.fName = action.fName.value;
-      schedulePerson.lName = action.lName.value;
-      schedulePerson.dob = action.dob.value;
-      schedulePerson.address = action.address;
+      schedulePerson.fName = action.fName;
+      schedulePerson.lName = action.lName;
+      schedulePerson.dob = action.dob;
       // is this person a valid head of household based on a database query?
       schedulePerson.validHeadOfHouse = action.validHeadOfHouse;
       schedulePerson.availablePantries = action.availablePantries;
+      schedulePerson.address = action.address;
       return schedulePerson;
     case 'VALIDATE_HOUSE_CODE':
       let houseCodeState = Object.assign({}, state);
@@ -40,7 +40,7 @@ function PersonSchedulerReducer(state = initialState, action) {
       logOffState.validHeadOfHouse = false;
       logOffState.fName = "";
       logOffState.lName = "";
-      logOffState.address = ""
+      logOffState.address = "";
       logOffState.dob = "";
       logOffState.availablePantries = [];
       logOffState.selectedPantry = undefined;

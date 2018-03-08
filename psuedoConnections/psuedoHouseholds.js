@@ -6,17 +6,19 @@ const peeps = require('./psuedoPeople.js');
 
 const psuedoHouse = {
   getAddressCode: (inputCode) => {
+
     var adr = '';
     for (var i = 0; i < houses.length; i++) {
+
       if (houses[i].code == inputCode) {
-        adr = houses[i].address;
+
+        return houses[i].address;
         break;
       }
-
       return adr;
     }
   },
-  
+
   getPeople: (address) => {
     let code = 'No people at that address, check input';
     for (var i = 0; i < houses.length; i++) {
@@ -55,7 +57,7 @@ const psuedoHouse = {
     var v = false;
     for (var i = 0; i < houses.length; i++) {
       if (houses[i].code == inputCode) {
-        v = true;
+        return true;
         break;
       }
     }
