@@ -1,12 +1,5 @@
 import $ from 'jquery';
 
-// people list to help fake database query. TODO replace with actual database query
-const peeps = require('../psuedoConnections/psuedoPeople.js');
-const house = require('../psuedoConnections/psuedoHouseholds.js');
-const pantry = require('../psuedoConnections/psuedoPantries.js');
-
-//action that creates the list and updates the mapStateToProps
-
 export function SchedulePersonRequest(firstName, lastName, dob, code) {
   var person = {
     fname: firstName,
