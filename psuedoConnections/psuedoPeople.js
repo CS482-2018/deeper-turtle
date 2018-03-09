@@ -16,7 +16,7 @@ const psuedoPeople = {
     return 'no person found';
   },
 
-  isPersonPart: (code, fName,lName, dob) => {
+  isPersonPart: (code, fName, lName, dob) => {
     let temp = psuedoPeople.getByHouse(code);
     let v = false;
     for (var i = 0; i < temp.length; i++) {
@@ -59,6 +59,10 @@ const psuedoPeople = {
     }
 
     return peeps;
+  },
+
+  schedulePerson: (code, fName, lName, dob) => {
+    return dob;
   },
 
 };

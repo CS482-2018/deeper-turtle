@@ -42,6 +42,38 @@ var peopleRoutes = function(app)
 		var peopleHouse = peeps.getByHouse(req.body.houseCode)
 		res.status(200).json(peopleHouse)
 	})
+
+  app.post('/API/people/schedulePerson', function(req, res)
+	{
+    // is this person linked to this house code?
+		var personPart = peeps.isPersonPart(req.body.code, req.body.fname, req.body.lname, req.body.dob);
+    var validHead = peeps.isHead(req.body.fname, req.body.lname, req.body.dob); // are they head of household?
+    // if both conditions met exists is true
+    var exists = personPart && (validHead != 'person not in system' && validHead != false);
+
+    // default values
+    var address = "";
+    var availablePantries = [];
+
+    if(exists){ // is this a valid person?
+      address = house.getAddressCode(req.body.code); // get their address
+      var houseCapacity = house.getCapacityCode(req.body.code); // get the capacity of their house
+      availablePantries = pantry.getAvailable(houseCapacity); // get list of available pantries
+    }
+
+    // create an object to send back
+    scheduledPerson = {
+      fname : req.body.fname,
+      lname : req.body.lname,
+      dob : req.body.dob,
+      address : address,
+      validHeadOfHouse : exists,
+      availablePantries : availablePantries,
+    }
+
+    res.status(200).json(scheduledPerson)
+	})
+
 }
 
 module.exports = {
