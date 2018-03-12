@@ -21,35 +21,35 @@ If you do not have any of these things, call into Kalamazoo Loaves and Fishes
 
 Enter your house code into the given field (1234 is the example here, yours will look different)
 If your house code does not work, check your input it needs to be exactly what you were given from Kalamazoo Loaves and Fishes
-<img src = "/img/Step1.png" height = "500" >
+<img src = "/img/Step1.png" width = "1000" >
 
 
-											Step2: 
+#### Step2: 
 Enter the information for your head of household (First Name, Last Name, and Date of Birth)										
-<img src = "/img/Step2.png" height = "500" >
+<img src = "/img/Step2.png" width = "1000" >
 
 If you see an error message, you haven't entered the head of household correctly. Double check the infromation
 is correct and then if errors persist try other members of your house. If errors still continue, call into Kalamazoo
 Loaves and Fishes to schedule
-<img src = "/img/Step2a.png" height = "500" >
+<img src = "/img/Step2a.png" width = "1000" >
 
 
-											Step3: 
+#### Step3: 
 Once you have entered the correct information it will take you to the scheduling page
 Below select your pantry and click the schedule button to reserve your slots 
 
-<img src = "/img/Step3.png" height = "500" >
+<img src = "/img/Step3.png" width = "1000" >
 
 
-											FAQ:
+#### FAQ:
 
-WHY AM I NOT SEEING EVERY PANTRY?
+Why am I not seeing all pantries?
  Only pantries with available capacity to fit your household are displayed
  
-HOW DO I GET A CODE?
+How do I get a Code?
 	Call into Kalamazoo Loaves and Fishes to see if you are eligible
 	
-I CANT LOG IN
+I can't log in?
 	Double check that your input is correct and there are no typos, if problems still persist call KLF and schedule manually
 `
 
