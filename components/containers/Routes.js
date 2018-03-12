@@ -10,6 +10,7 @@ import CodeGenContainer from './CodeGenContainer';
 import LoginContainer from './LoginContainer';
 import PrivateRouteContainer from './PrivateRouteContainer';
 import SchedulerContainer from './SchedulerContainer';
+import SchedulerHelper from '../presentationals/SchedulerHelper';
 
 import HomePage from '../presentationals/HomePage';
 
@@ -29,6 +30,11 @@ class Routes extends React.Component {
 					<Route path="/scheduler" component={() => {
 						return(
 							<SchedulerContainer id="SchedulerContainer" />
+						);
+					}}/>
+					<Route path="/scheduler_helper" component={() => {
+						return(
+							<SchedulerHelper />
 						);
 					}}/>
 					<PrivateRouteContainer path="/code-gen" component={() => {
