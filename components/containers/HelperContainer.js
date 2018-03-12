@@ -7,10 +7,29 @@ import PropTypes from 'prop-types';
 
 
 const initialSource = `
-## This is the Helper page!
-1. How to enter someone's information:
-2. How to modify information:
-3. Lol
+## How to Generate a Code for a User
+
+For KLF Employees:
+
+Step 1 
+
+Log into the KLF portal
+
+<img src = "/img/login.jpg" width = 100%>
+
+Step 2 
+
+Type in the name and date of birth for the person you want to find a code for. Hit submit.
+
+<img src = "/img/enterinfo.jpg" width = 100%>
+
+Step 3 
+
+If there is a code there already, reassign the existing code. Otherwise, you can regenerate 
+a new code by clicking "Regenerate"
+
+<img src = "/img/elmer.jpg" width = 100%>
+
 `
 
 
@@ -34,7 +53,7 @@ class HelperContainer extends React.Component {
 		render() {
 
 			const output = '## this is a double header thing'
-			return <ReactMarkdown source = {initialSource} />
+			return <ReactMarkdown escapeHtml = {false} source = {initialSource} />
 
 		}
 }
