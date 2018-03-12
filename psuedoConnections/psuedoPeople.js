@@ -20,7 +20,6 @@ const psuedoPeople = {
     let temp = psuedoPeople.getByHouse(code);
     let v = false;
     for (var i = 0; i < temp.length; i++) {
-      console.log(temp[i]);
       if (temp[i].fname == fName && temp[i].lname == lName && temp[i].dob==dob) {
         v = true;
         break;
