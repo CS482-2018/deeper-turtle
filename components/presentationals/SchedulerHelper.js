@@ -15,9 +15,10 @@ In order to use this you need:
 		
 If you do not have any of these things, call into Kalamazoo Loaves and Fishes
 
-										WALKTHROUGH
+### WALKTHROUGH
 
-											Step1: 
+#### Step1: 
+
 Enter your house code into the given field (1234 is the example here, yours will look different)
 If your house code does not work, check your input it needs to be exactly what you were given from Kalamazoo Loaves and Fishes
 <img src = "/img/Step1.png" height = "500" >
@@ -68,7 +69,11 @@ class HelperContainer extends React.Component {
 		render() {
 
 			const output = '## this is a double header thing'
-			return <ReactMarkdown escapeHtml = {false} source = {initialSource} />
+			return (
+                <div className="styledMarkdown" >
+                    <ReactMarkdown escapeHtml = {false} source = {initialSource} />
+                </div>
+            )
 
 		}
 }
