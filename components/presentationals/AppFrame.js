@@ -118,7 +118,7 @@ class AppFrame extends React.Component {
                                         <ListItemText primary="Code Gen"/>
                                 </ListItem>
                                  <ListItem button component={HelperLink}>
-                                        <ListItemText primary="Helper"/>
+                                        <ListItemText primary="Staff Helper"/>
                                 </ListItem>
                             </div>: null
                         }
