@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 
 const initialSource = `
 ## How to schedule yourself
+
 In order to use this you need:
 		A code from Kalamazoo Loaves and Fishes
 		A stable internet connection 
