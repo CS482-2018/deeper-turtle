@@ -15,7 +15,7 @@ In order to use this you need:
 		
 If you do not have any of these things, call into Kalamazoo Loaves and Fishes
 
-### WALKTHROUGH
+## Walkthrough
 
 #### Step1: 
 
@@ -41,16 +41,16 @@ Below select your pantry and click the schedule button to reserve your slots
 <img src = "/img/Step3.png" width = "1000" >
 
 
-#### FAQ:
+## FAQ:
 
-Why am I not seeing all pantries?
- Only pantries with available capacity to fit your household are displayed
+#### Why am I not seeing all pantries?
+Only pantries with available capacity to fit your household are displayed
  
-How do I get a Code?
-	Call into Kalamazoo Loaves and Fishes to see if you are eligible
+#### How do I get a Code?
+Call into Kalamazoo Loaves and Fishes to see if you are eligible
 	
-I can't log in?
-	Double check that your input is correct and there are no typos, if problems still persist call KLF and schedule manually
+#### I can't log in?
+Double check that your input is correct and there are no typos, if problems still persist call KLF and schedule manually
 `
 
 /**
