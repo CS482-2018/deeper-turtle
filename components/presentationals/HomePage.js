@@ -16,7 +16,7 @@ class HomePage extends React.Component {
           If you are a KLF staff member or volunteer, please log in.
         </Typography> <br/>
         <Typography variant="headline" >
-          Note: For this prototype, the login in for KLF Staff is: 
+          Note: For this prototype, the login for KLF Staff is: 
         </Typography>
         <Typography variant="title" style={{marginLeft: "20px"}} >
           Username: admin, Password: password
