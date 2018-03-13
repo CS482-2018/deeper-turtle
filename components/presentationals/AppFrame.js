@@ -140,7 +140,7 @@ class AppFrame extends React.Component {
                                 <MenuIcon />
                             </IconButton>
                             <Typography variant="title" color="inherit" noWrap>
-                                KLF Data Entry
+                                KLF Scheduler
                             </Typography>
                             {!this.props.isAuthenticated ?
                                 <Button component={LoginLink} className={classes.button} color="inherit">KLF Login</Button> :
