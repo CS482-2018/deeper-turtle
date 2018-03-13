@@ -7,7 +7,7 @@ class HomePage extends React.Component {
   {
     return (
       <div>
-        <Typography variant="headline" > Welcome to our the Kalamazoo Loaves and Fishes Scheduler </Typography> <br/>
+        <Typography variant="headline" > Welcome to the Kalamazoo Loaves and Fishes Scheduler </Typography> <br/>
         <Typography variant="subheading" >
           If you are a client trying to register, either choose the Scheduler from the sidebar or 
           click on the "How to scheudle yourself" link.
