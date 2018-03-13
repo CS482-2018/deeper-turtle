@@ -10,7 +10,7 @@ var dummyPeople =
   "fname":"Juliet",
   "lname":"Pickles",
   "dob":"1983-05-24",
-  "code":"1234",
+  "code":"-1",
   "ishead":false
 },
 {
