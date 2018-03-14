@@ -14,7 +14,7 @@ const styles = theme => ({
   },
   container: {
         padding: '30px',
-        
+
   },
   button: {
     marginTop : theme.spacing.unit,
@@ -29,23 +29,8 @@ const styles = theme => ({
 
 
 /**
- * This presentational component displays an array of people.  It supports the following
- * fields:
- *      Name            person.fName + " " + person.lName
- *      Date of Birth   person.dob
- *      Address         person.addr
- *
- * Optionally, you can use it to select a person in the table and can have the componenet
- * call a callback function once the person has been selected.
- *
- * Required props:
- *      people: Array of people to be displayed
- *
- * Optional props:
- *      selectable: Boolean, if true, one can select a person from the table
- *      onSelect(person): Function, if selectable, this function is required.
+ * This presentational component displays an array of pantries.
  */
-
 
 class PantryScheduleTable extends React.Component {
 
@@ -104,9 +89,9 @@ class PantryScheduleTable extends React.Component {
                   className={classes.button}
                   onClick={() => {
                     if(selectedPantry === undefined){
-                      this.props.onSelect(this.props.pantries[this.state.selectedIndex]); // select this pantry
+                      this.props.onSelect(this.props.houseCode, this.props.pantries[this.state.selectedIndex]); // select this pantry
                     } else {
-                      this.props.onCancel(); // cancel the scheduled pantry visit
+                      this.props.onCancel(this.props.houseCode); // cancel the scheduled pantry visit
                     }
                   }}
                 >

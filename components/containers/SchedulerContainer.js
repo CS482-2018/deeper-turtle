@@ -10,7 +10,7 @@ import FailedToSchedule from '../presentationals/FailedToSchedule';
 import PantryScheduleTable from '../presentationals/PantryScheduleTable'
 
 //Actions
-import {LogOffScheduler, SchedulePersonRequest, ValidateHouseCodeRequest, CancelPantryVisit, SchedulePantryVisit} from '../../actions/SchedulingActions';
+import {LogOffScheduler, SchedulePersonRequest, ValidateHouseCodeRequest, CancelScheduledPantryVisit, SaveScheduledPantryVisit} from '../../actions/SchedulingActions';
 
 
 /**
@@ -31,6 +31,7 @@ class SchedulerContainer extends React.Component {
 
       if(this.props.validHeadOfHouse){ // is the head of house personal info valid?
         pantriesList = (<PantryScheduleTable // list available pantries
+                          houseCode = {this.props.code}
                           pantries = {this.props.availablePantries}
                           selectedPantry = {this.props.selectedPantry}
                           onSelect = {this.props.dispatchSchedulePantryVisitRequest}
@@ -87,14 +88,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     dispatchPersonScheduleRequest : (fName, lName, dob, code) => dispatch(SchedulePersonRequest(fName, lName, dob, code)),
     dispatchEnterHouseCodeRequest : (code) => dispatch(ValidateHouseCodeRequest(code)),
     dispatchLogOffRequest : () => dispatch(LogOffScheduler()),
-    dispatchSchedulePantryVisitRequest : (pantry) => dispatch(SchedulePantryVisit(pantry)),
-    dispatchCancelPantryVisitRequest : () => dispatch(CancelPantryVisit()),
+    dispatchSchedulePantryVisitRequest : (houseCode, pantry) => dispatch(SaveScheduledPantryVisit(houseCode, pantry)),
+    dispatchCancelPantryVisitRequest : (houseCode) => dispatch(CancelScheduledPantryVisit(houseCode)),
   }
-}
-
-// No required props yet
-SchedulerContainer.propTypes = {
-    //id : PropTypes.string.isRequired,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SchedulerContainer);

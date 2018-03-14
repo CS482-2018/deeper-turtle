@@ -1,5 +1,52 @@
 import $ from 'jquery';
 
+/*
+  sends pantry data to backend to be saved and then
+  calls function to change local state
+*/
+export function SaveScheduledPantryVisit(houseCode, pantry){
+
+  return (dispatch) => {
+  		var options = {
+  				method: "POST",
+  				url: "API/pantries/schedulePantryVisit",
+  				data: JSON.stringify({houseCode : houseCode, pantry : pantry}),
+  				contentType: "application/json",
+  		}
+  		$.ajax(options).then((data, status, j) => {
+        console.log('House ' + data.houseCode + ' scheduled a pantry visit to ' + data.pantry.Name + ' today at ' + data.pantry.Hours);
+        dispatch(SchedulePantryVisit(pantry));
+  		},
+  		(jxhr, status, err) => {
+  			console.log("Failed To Schedule Pantry Visit")
+  		})
+  }
+}
+
+/*
+ sends request to backend to cancel current pantry visit before
+ calling function to edit the local state
+*/
+export function CancelScheduledPantryVisit(houseCode){
+
+  return (dispatch) => {
+  		var options = {
+  				method: "POST",
+  				url: "API/pantries/cancelPantryVisit",
+  				data: JSON.stringify({houseCode : houseCode}),
+  				contentType: "application/json",
+  		}
+  		$.ajax(options).then((data, status, j) => {
+        console.log('House ' + houseCode + ' canceled its pantry visit today')
+        dispatch(CancelPantryVisit());
+  		},
+  		(jxhr, status, err) => {
+  			console.log("Failed To Cancel Pantry Visit")
+  		})
+  }
+}
+
+// validate and person trying to schdule a pantry visit
 export function SchedulePersonRequest(firstName, lastName, dob, code) {
   var person = {
     fname: firstName,
@@ -27,6 +74,7 @@ export function SchedulePersonRequest(firstName, lastName, dob, code) {
   }
 }
 
+// validat house code with ajax request
 export function ValidateHouseCodeRequest(houseCode) {
 
   return (dispatch) => {
@@ -73,6 +121,7 @@ export function LogOffScheduler() {
   };
 }
 
+// save entered house code to state and indicate if it is valid
 export function EnterHouseCode(houseCode, valid) {
 
   const VALIDATE_HOUSE_CODE = 'VALIDATE_HOUSE_CODE';
@@ -83,14 +132,6 @@ export function EnterHouseCode(houseCode, valid) {
 
   };
 }
-
-// TODO replace logic with database query to check if input code exists
-function findCode(code) {
-  var a = house.validCode(code);
-  console.log('Valid code returns ', a);
-  return a;
-}
-
 
 // schedule person with selected pantry.
 export function SchedulePantryVisit(pantry) {
