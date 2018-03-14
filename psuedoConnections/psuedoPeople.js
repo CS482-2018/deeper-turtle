@@ -64,6 +64,16 @@ const psuedoPeople = {
     return dob;
   },
 
+  //returns bool representing if the set was successful
+  setCode: (code, fName, lName, dob) => {
+    if(psuedoPeople.isValid(fName, lName, dob)) {
+      //set the code in the database
+      
+      return true;
+    }
+    return false;
+  }
+
 };
 
 //console.log(psuedoPeople.findPerson('Gertrude','Bates','1988-08-10'));

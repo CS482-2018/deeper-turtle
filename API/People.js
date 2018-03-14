@@ -72,8 +72,48 @@ var peopleRoutes = function(app)
     }
 
     res.status(200).json(scheduledPerson)
-	})
+  })
 
+  /*
+   * Generates a code for a person defined by the request
+   */
+  app.post('/API/people/generateCode', function(req, res)
+	{
+    //should check if request is authorized, but does not currently
+    if(peeps.isValid(req.body.fname, req.body.lname, req.body.dob))
+    {
+      var code = generateCode();
+      peeps.setCode(code);
+      res.status(200).json({code});
+    }
+    else
+    {
+      console.log("invalid person")
+      res.status(401);
+    }
+  })
+
+  app.post('/API/people/deleteCode', function(req, res)
+	{
+    //should check if request is authorized, but does not currently
+    if(peeps.isValid(req.body.fname, req.body.lname, req.body.dob))
+    {
+      var code = -1;
+      peeps.setCode(code);
+      res.status(200).json({code});
+    }
+    else
+    {
+      console.log("invalid person")
+      res.status(401);
+    }
+  })
+
+}
+
+function generateCode()
+{
+  return (Math.random()*0x0FFFFFF<<0);
 }
 
 module.exports = {

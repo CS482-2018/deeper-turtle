@@ -36,7 +36,7 @@ class CodeDisplay extends React.Component
 			<Paper className={classes.container}>
 				<Grid container spacing={24} >
 					<Grid item xs={9}>
-						<Typography variant="title">{this.props.person.fname + " " + this.props.person.lname + " (" + this.props.person.addr + ")"}</Typography><br/>
+						<Typography variant="title">{this.props.person.fname + " " + this.props.person.lname }</Typography><br/>
 					</Grid>
 					<Grid item xs={3}>
 						<Button

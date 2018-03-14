@@ -35,6 +35,7 @@ var pantryRoutes = function(app)
       pantry : req.body.pantry,
 
     }
+    pantry.scheduleVisit(req.body.houseCode, req.body.pantry);
     res.status(200).json(pantrySchedulingData)
   })
 
@@ -44,6 +45,7 @@ var pantryRoutes = function(app)
         TODO indicate in database that this house cancled today's pantry
         visit and remove them from the schedule
     */
+    pantry.cancelVisit(req.body.houseCode);
     res.status(200).json(req.body.houseCode)
   })
 }
