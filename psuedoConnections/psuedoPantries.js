@@ -24,5 +24,13 @@ const psuedoPantries = {
     }
     return o;
   },
+  scheduleVisit: (houseCode, pantry) => {
+    //TODO update DB
+    console.log('schedule visit for: ' + houseCode);
+  },
+  cancelVisit: (houseCode) => {
+    //TODO update DB
+    console.log('canceled visit for: ' + houseCode);
+  }
 };
 module.exports = psuedoPantries;

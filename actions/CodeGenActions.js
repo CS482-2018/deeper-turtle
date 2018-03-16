@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 /**
 *	Sets the chosen person for the code generator
 *
@@ -18,9 +20,24 @@ export function CodeGenChoosePerson(person)
 *   in for the CodeGen
 */
 export function CodeGenDelete() {
-  return (dispatch) => {
-  		//TODO API call to delete code from person
-  		dispatch(CodeGenSet(-1));
+  return (dispatch, getState) => {
+    const { codeGenState } = getState();
+    const { person } = codeGenState;
+    var options = {
+      method: "POST",
+      url: "API/people/deleteCode",
+      data: JSON.stringify(person),
+      contentType: "application/json",
+    }
+    $.ajax(options).then((data, status, j) => {
+      if(status === 'success') {
+        dispatch(CodeGenSet(-1));
+      }
+    },
+    (jxhr, status, err) => {
+      //handle error
+      console.log('failure')
+    })
   }
 }
 
@@ -30,11 +47,26 @@ export function CodeGenDelete() {
  * Will eventually retrieve this code from an API
  */
 export function CodeGenGenerate() {
-  return (dispatch) => {
-  		//TODO API call instead of generate code locally
-  		var code = generateCode();
-  		dispatch(CodeGenSet(code));
-  }
+  return (dispatch, getState) => {
+      const { codeGenState } = getState();
+      const { person } = codeGenState;
+
+      var options = {
+        method: "POST",
+        url: "API/people/generateCode",
+        data: JSON.stringify(person),
+        contentType: "application/json",
+      }
+      $.ajax(options).then((data, status, j) => {
+        if(status === 'success') {
+          dispatch(CodeGenSet(data.code));
+        }
+      },
+      (jxhr, status, err) => {
+        //handle error
+        console.log('failure')
+      })
+    }
 }
 
 function generateCode()
